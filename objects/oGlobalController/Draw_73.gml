@@ -5,8 +5,8 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_top);
 draw_set_font(fontGui);
 
-draw_text(room_width/4+20,6,"SCORE\n"+string_replace(string_format(global.score,2,2)," ","0"));
-draw_text(room_width/4*3-20,6,"HIGH SCORE\n"+string_replace(string_format(global.hiscore,2,2)," ","0"));
+draw_text(room_width/4+20,6,"SCORE\n"+string(global.score div 60)+":"+string_replace(string_format(global.score % 60,2,2)," ","0"));
+draw_text(room_width/4*3-20,6,"HIGH SCORE\n"+string(global.hiscore div 60)+":"+string_replace(string_format(global.hiscore % 60,2,2)," ","0"));
 
 if(title) {
 	draw_set_valign(fa_bottom);

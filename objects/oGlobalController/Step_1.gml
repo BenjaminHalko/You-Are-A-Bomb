@@ -29,6 +29,7 @@ if(keyboard_check_pressed(vk_anykey)) {
 		title = false;
 		timerstart = false;
 		logo = 0;
+		newrecord = false;
 		global.score = 0;
 	} else if(!instance_exists(oPlayer) and gameoverNum > 1) title = true;
 }
