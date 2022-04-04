@@ -5,7 +5,7 @@ surface_resize(application_surface,room_width,room_height);
 if(!BROWSER) window_set_size(room_width*3,room_height*3);
 
 #macro TILE_SIZE 8
-#macro BROWSER 0
+#macro BROWSER 1
 
 create = 2;
 minAmount = 4;
@@ -54,6 +54,8 @@ if(file_exists("score")) {
 	global.hiscore = file_text_read_real(_file);
 	file_text_close(_file);
 }
+
+if(is_nan(global.hiscore)) global.hiscore = 0;
 
 var lay_id = layer_get_id("Wall");
 global.collisionMap = layer_tilemap_get_id(lay_id);	
