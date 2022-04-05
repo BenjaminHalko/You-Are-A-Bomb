@@ -5,7 +5,7 @@ surface_resize(application_surface,room_width,room_height);
 if(!BROWSER) window_set_size(room_width*3,room_height*3);
 
 #macro TILE_SIZE 8
-#macro BROWSER 1
+#macro BROWSER 0
 
 create = 2;
 minAmount = 4;
