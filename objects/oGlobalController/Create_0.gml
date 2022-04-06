@@ -21,6 +21,8 @@ newrecord = false;
 
 title = true;
 
+choice = 0;
+
 global.particle = true;
 
 global.b = []
@@ -47,7 +49,7 @@ for(var i = 0; i < array_length(global.frontgrid); i++) {
 	global.frontgrid[i] = _amount;
 }
 
-global.score = 0;
+global.score = [0,0];
 global.hiscore = 0;
 if(file_exists("score")) {
 	var _file = file_text_open_read("score");
@@ -60,10 +62,13 @@ if(is_nan(global.hiscore)) global.hiscore = 0;
 var lay_id = layer_get_id("Wall");
 global.collisionMap = layer_tilemap_get_id(lay_id);	
 
-audio_play_sound(mSong,1,true);
+song = audio_play_sound(mSong,1,true);
 
 curve = animcurve_get_channel(PlayerStartCurve,0);
 logo = 0;
+
+p1 = noone;
+p2 = noone;
 
 if(BROWSER) {
 	width = browser_width;

@@ -5,14 +5,26 @@ if(starting < 2) {
 	exit;
 }
 
-Input();
+//Input();
+if(player == 0) {
+	key_left = keyboard_check(vk_left) or keyboard_check(ord("A"));	
+	key_right = keyboard_check(vk_right) or keyboard_check(ord("D"));	
+	key_jump = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"));	
+} else if(player == 1) {
+	key_left = keyboard_check(ord("A"));	
+	key_right = keyboard_check(ord("D"));	
+	key_jump = keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("W"));
+} else {
+	key_left = keyboard_check(vk_left);	
+	key_right = keyboard_check(vk_right);	
+	key_jump = keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up);
+}
 
 if(timer <= 0 or y > room_height) {
 	oGlobalController.timerstart = false;
 	var _explosionSize = 6*TILE_SIZE;
 	
 	if(scale > 2) {
-		instance_create_layer(x,y,layer,oPlayerExplosion);
  		for(var i = x-_explosionSize; i < x+_explosionSize; i+=TILE_SIZE) {
 			for(var j = y-_explosionSize; j < y+_explosionSize; j+=TILE_SIZE) {
 				if(tilemap_get_at_pixel(global.collisionMap,i,j) != 1 or !point_in_circle(i,j,x,y,_explosionSize)) continue;
@@ -20,7 +32,7 @@ if(timer <= 0 or y > room_height) {
 				instance_create_layer(i-(i mod TILE_SIZE),j-(j mod TILE_SIZE),layer,oWallExplosion);
 			}
 		}
-		instance_create_layer(x,y,layer,oPlayerExplode);
+		with(instance_create_layer(x,y,layer,oPlayerExplode)) image_index = other.image_index;
 		instance_create_layer(x,y,layer,oPlayerExplosion);
 		instance_destroy();
 	} else {
@@ -35,7 +47,7 @@ if(key_left != key_right) timeStart = true;
 
 with(oEnemy) {
 	var _radius = 24;
-	if(point_in_circle(x,y,other.x,other.y,_radius) or active > 0) {
+	if(point_in_circle(x,y,other.x,other.y,_radius) or activeId == other.id) {
 		var _dist = min(point_distance(x,y,other.x,other.y),active);
 		var _dir = point_direction(x,y,other.x,other.y);
 		x += lengthdir_x(_dist,_dir);
@@ -50,6 +62,7 @@ with(oEnemy) {
 		
 		active += 0.5;
 		other.scale = max(other.scale,1.5/(1-_dist/_radius));
+		activeId = other.id;
 	}
 }
 
@@ -61,7 +74,8 @@ if((canJump-- > 0 or doubleJump) && key_jump) {
 	vsp = jumpspd;
 	if(canJump <= 0) {
 		doubleJump = 0;
-		instance_create_depth(x,y-round(bounce),depth+1,oPlayerJump);
+		var _jump = instance_create_depth(x,y-round(bounce),depth+1,oPlayerJump);
+		if(player == 2) _jump.col = #00996B;
 	}
 	audio_play_sound(snJump,2,false);
 	canJump = 0;

@@ -1,10 +1,10 @@
 /// @desc
 
-if(gameoverNum == 0 and global.score > global.hiscore and !title) {
-	global.hiscore = global.score;
+if(gameoverNum == 0 and max(global.score[0],global.score[1]) > global.hiscore and !title) {
+	global.hiscore = max(global.score[0],global.score[1]);
 	newrecord = true;
 	var _file = file_text_open_write("score");
-	file_text_write_real(_file,global.score);
+	file_text_write_real(_file,max(global.score[0],global.score[1]));
 	file_text_close(_file);
 }
 

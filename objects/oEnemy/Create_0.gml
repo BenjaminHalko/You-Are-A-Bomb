@@ -10,11 +10,12 @@ vsp = 0;
 vsp_f = 0;
 vsp_final = 0;
 
-maxTime = 4-(global.score > 10);
+maxTime = 4-(max(global.score[0],global.score[1]) > 10);
 timer = maxTime;
 
 scale = 1;
 
 active = false;
+activeId = noone;
 
 image_index = 1;

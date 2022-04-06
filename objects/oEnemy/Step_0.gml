@@ -9,12 +9,12 @@ vsp_final -= vsp_f;
 bounceSpd -= 0.4;
 bounce = max(0,bounce+bounceSpd);
 
-if(active && !instance_exists(oPlayer)) active = false;
+if(!instance_exists(activeId)) activeId = noone;
 
 if(timer <= 0 or y > room_height) {
 	var _explosionSize = random_range(4,6)*TILE_SIZE;
 	
-	if(!active) {
+	if(activeId == noone) {
 		if(scale > 2) {
 			instance_create_layer(x,y,layer,oPlayerExplosion);
 	 		for(var i = x-_explosionSize; i < x+_explosionSize; i+=TILE_SIZE) {
@@ -35,7 +35,7 @@ if(timer <= 0 or y > room_height) {
 	exit;
 } else timer -= 1/60;
 
-if(active) exit;
+if(activeId != noone) exit;
 
 //Vertical Tiles
 if (tilemap_get_at_pixel(global.collisionMap, bbox_right, bbox_bottom + vsp_final) || tilemap_get_at_pixel(global.collisionMap, bbox_left, bbox_bottom + vsp_final))

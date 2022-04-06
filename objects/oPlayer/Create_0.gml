@@ -29,4 +29,4 @@ startCurve = animcurve_get_channel(PlayerStartCurve,0);
 
 scale = 0;
 
-x = room_width/2;
+player = 0;
