@@ -22,6 +22,7 @@ if(timer <= 0 or y > room_height) {
 					if(tilemap_get_at_pixel(global.collisionMap,i,j) != 1 or !point_in_circle(i,j,x,y,_explosionSize)) continue;
 					tilemap_set_at_pixel(global.collisionMap,0,i,j);
 					instance_create_layer(i-(i mod TILE_SIZE),j-(j mod TILE_SIZE),layer,oWallExplosion);
+					if(j > room_height - TILE_SIZE) global.maxTime -= 0.01;
 				}
 			}
 			with(instance_create_layer(x,y,layer,oPlayerExplode)) image_index = 1;

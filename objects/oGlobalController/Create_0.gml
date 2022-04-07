@@ -5,7 +5,7 @@ surface_resize(application_surface,room_width,room_height);
 if(!BROWSER) window_set_size(room_width*3,room_height*3);
 
 #macro TILE_SIZE 8
-#macro BROWSER 0
+#macro BROWSER (os_browser != browser_not_a_browser)
 
 create = 2;
 minAmount = 4;
@@ -51,6 +51,7 @@ for(var i = 0; i < array_length(global.frontgrid); i++) {
 
 global.score = [0,0];
 global.hiscore = 0;
+global.maxTime = 3;
 if(file_exists("score")) {
 	var _file = file_text_open_read("score");
 	global.hiscore = file_text_read_real(_file);

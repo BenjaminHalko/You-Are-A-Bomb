@@ -10,7 +10,7 @@ vsp = 0;
 vsp_f = 0;
 vsp_final = 0;
 
-maxTime = 4-(max(global.score[0],global.score[1]) > 10);
+maxTime = max(2,global.maxTime+(max(global.score[0],global.score[1]) <= 10));
 timer = maxTime;
 
 scale = 1;

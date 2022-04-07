@@ -52,6 +52,7 @@ if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keybo
 		logo = 0;
 		newrecord = false;
 		global.score = [0,0];
+		global.maxTime = 3;
 	} else if(!instance_exists(oPlayer) and gameoverNum > 1) title = true;
 }
 
