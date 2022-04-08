@@ -1,11 +1,26 @@
 /// @desc
 randomize();
 
+enum OS {
+	OSBROWSER,
+	OSOPERA,
+	OSDESKTOP
+}
+
+if(os_type == os_operagx) global.ostype = OS.OSOPERA;
+else if(os_browser != browser_not_a_browser) global.ostype = OS.OSBROWSER;
+else global.ostype = OS.OSDESKTOP;
+
+#macro BROWSER (global.ostype == OS.OSBROWSER)
+#macro OPERA (global.ostype == OS.OSOPERA)
+#macro DESKTOP (global.ostype == OS.OSDESKTOP)
+
+#macro CHALLENGEID "50505bbb-2b2f-4027-88fa-11b1d5a6c826"
+
 surface_resize(application_surface,room_width,room_height);
-if(!BROWSER) window_set_size(room_width*3,room_height*3);
+if(DESKTOP) window_set_size(room_width*3,room_height*3);
 
 #macro TILE_SIZE 8
-#macro BROWSER (os_browser != browser_not_a_browser)
 
 create = 2;
 minAmount = 4;
@@ -54,7 +69,15 @@ for(var i = 0; i < array_length(global.frontgrid); i++) {
 global.score = [0,0];
 global.hiscore = 0;
 
-if(file_exists("score")) {
+
+
+if(OPERA) {
+	try gxc_challenge_get_global_scores(function(_status, _result) {
+		try if (_status == 200 and array_length(_result.data.scores) > 0) global.hiscore = _result.data.scores[0].score/1000;
+		catch(_error) show_debug_message(_error);
+	},{challengeId: CHALLENGEID});
+	catch(_error) show_debug_message(_error);
+} else if(file_exists("score")) {
 	var _file = file_text_open_read("score");
 	global.hiscore = file_text_read_real(_file);
 	file_text_close(_file);

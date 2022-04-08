@@ -14,30 +14,8 @@ function Approach(a, b, amount) {
 	return a;
 }
 
-function ApproachFade(Value,Target,MaxSpd,Ease) {
-	Value += median(-MaxSpd,MaxSpd,(1-Ease)*(Target-Value));
-	return Value;
-}
-
-function ApproachCircleEase(Value,Target,MaxSpd,Ease) {
-	Value += median(-MaxSpd,MaxSpd,(1-Ease)*angle_difference(Target,Value));
-	return Value
-}
-
-function Wave(_from, _to, _duration, _offset) {
-	a4 = (_to - _from) * 0.5;
-	return _from + a4 + sin((((current_time * 0.001) + _duration * _offset) / _duration) * (pi*2)) * a4;
-}
-
 function ValuePercent(_x, _a, _b) {
 	return (_x - _a) / (_b - _a)
-}
-
-function Input() {
-	key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
-	key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
-	
-	key_jump = keyboard_check_pressed(vk_space);
 }
 
 function PlayerDraw() {
@@ -56,20 +34,20 @@ function PlayerDraw() {
 
 	if(_time > 1/8) {
 		_len = min(2*ValuePercent(_time,1/8,3/8),2);
-		draw_line(x,_top-3-_yExtra,x-_len,_top-3-_len-_yExtra);
+		draw_line(x+(BROWSER || OPERA),_top-3-_yExtra+(BROWSER || OPERA),x-_len+(BROWSER || OPERA),_top-3-_len-_yExtra+(BROWSER || OPERA));
 		_x = x-_len;
 		_y = _top-3-_len;
 	}
 	if(_time > 3/8) {
 		_len = min(3*ValuePercent(_time,3/8,6/8),3)
-		draw_line(x-2,_top-5-_yExtra,x-2-_len,_top-5-_yExtra);
+		draw_line(x-2+(BROWSER || OPERA),_top-5-_yExtra+(BROWSER || OPERA),x-2-_len+(BROWSER || OPERA),_top-5-_yExtra+(BROWSER || OPERA));
 		_x = floor(x-1-_len);
 		_y = _top-5;
 	}
 
 	if(_time > 6/8) {
 		_len = min(2,2*ValuePercent(_time,6/8,1));
-		draw_line(x-5,_top-5-_yExtra,x-5-_len,_top-5+_len-_yExtra);
+		draw_line(x-5+(BROWSER || OPERA),_top-5-_yExtra+(BROWSER || OPERA),x-5-_len+(BROWSER || OPERA),_top-5+_len-_yExtra+(BROWSER || OPERA));
 		_x = x-5-_len;
 		_y = _top-5+_len;
 	}
@@ -88,13 +66,6 @@ function PlayerDraw() {
 }
 
 function scale_canvas(_bw,_bh,_cw,_ch) {
-/// @function                       scale_canvas(base width, base height, current width, current height, center);
-/// @param {int}    base width      The base width for the game room
-/// @param {int}    base height     The base height for the game room
-/// @param {int}    current width   The current width of the game canvas
-/// @param {int}    current height  The current height of the game canvas
-/// @param {bool}   center          Set whether to center the game window on the canvas or not
-
 var _aspect = (_bw / _bh);
 
 if ((_cw / _aspect) > _ch)

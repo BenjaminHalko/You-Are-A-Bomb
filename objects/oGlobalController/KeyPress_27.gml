@@ -1,3 +1,3 @@
 /// @desc
 
-if(!BROWSER) game_end();
+if(DESKTOP) game_end();
