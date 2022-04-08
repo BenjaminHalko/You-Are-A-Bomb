@@ -23,6 +23,8 @@ title = true;
 
 choice = 0;
 
+tutorial = false;
+
 global.particle = true;
 
 global.b = []
@@ -51,7 +53,7 @@ for(var i = 0; i < array_length(global.frontgrid); i++) {
 
 global.score = [0,0];
 global.hiscore = 0;
-global.maxTime = 3;
+
 if(file_exists("score")) {
 	var _file = file_text_open_read("score");
 	global.hiscore = file_text_read_real(_file);
@@ -64,6 +66,7 @@ var lay_id = layer_get_id("Wall");
 global.collisionMap = layer_tilemap_get_id(lay_id);	
 
 song = audio_play_sound(mSong,1,true);
+audio_sound_gain(song,0.6,0);
 
 curve = animcurve_get_channel(PlayerStartCurve,0);
 logo = 0;

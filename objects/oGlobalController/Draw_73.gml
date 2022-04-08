@@ -5,6 +5,10 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_top);
 draw_set_font(fontGui);
 
+if(tutorial) {
+	draw_text(room_width/2,room_height/4,"MOVE LEFT OR RIGHT TO START");
+}
+
 draw_text(room_width/4,6,"PLAYER 1\n"+string(global.score[0] div 60)+":"+string_replace(string_format(global.score[0] % 60,2,2)," ","0"));
 draw_text(room_width/4*3,6,"PLAYER 2\n"+string(global.score[1] div 60)+":"+string_replace(string_format(global.score[1] % 60,2,2)," ","0"));
 draw_text(room_width/2,6,"HIGH SCORE\n"+string(global.hiscore div 60)+":"+string_replace(string_format(global.hiscore % 60,2,2)," ","0"));

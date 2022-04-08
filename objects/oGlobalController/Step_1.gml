@@ -20,7 +20,7 @@ if(timerstart) {
 	}
 }
 
-if(global.score[0] > 0 and alarm[0] <= 0 and !title) alarm[0] = room_speed-room_speed/4*(instance_number(oPlayer) == 2);
+if(global.score[0] > 0 and alarm[0] <= 0 and !title) { alarm[0] = room_speed-room_speed/4*(instance_number(oPlayer) == 2); tutorial = false; alarm[2] = -1;}
 
 if(!instance_exists(oPlayer) and alarm[1] <= 0) alarm[1] = 30;
 
@@ -52,7 +52,7 @@ if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keybo
 		logo = 0;
 		newrecord = false;
 		global.score = [0,0];
-		global.maxTime = 3;
+		alarm[2] = room_speed*5;
 	} else if(!instance_exists(oPlayer) and gameoverNum > 1) title = true;
 }
 
