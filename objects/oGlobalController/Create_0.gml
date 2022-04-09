@@ -4,23 +4,25 @@ randomize();
 enum OS {
 	OSBROWSER,
 	OSOPERA,
+	OSMOBILE,
 	OSDESKTOP
 }
 
 if(os_type == os_operagx) global.ostype = OS.OSOPERA;
+else if(os_type == os_android) global.ostype = OS.OSMOBILE;
 else if(os_browser != browser_not_a_browser) global.ostype = OS.OSBROWSER;
 else global.ostype = OS.OSDESKTOP;
 
 #macro BROWSER (global.ostype == OS.OSBROWSER)
 #macro OPERA (global.ostype == OS.OSOPERA)
 #macro DESKTOP (global.ostype == OS.OSDESKTOP)
+#macro MOBILE (global.ostype == OS.OSMOBILE)
 
 #macro CHALLENGEID "50505bbb-2b2f-4027-88fa-11b1d5a6c826"
+#macro TILE_SIZE 8
 
 surface_resize(application_surface,room_width,room_height);
 if(DESKTOP) window_set_size(room_width*3,room_height*3);
-
-#macro TILE_SIZE 8
 
 create = 2;
 minAmount = 4;
@@ -96,6 +98,16 @@ logo = 0;
 
 p1 = noone;
 p2 = noone;
+
+leftScreen = false;
+rightScreen = false;
+jumpScreen = false;
+jumpIsPressed = false;
+	
+screenButtonY = room_height-40;
+leftScreenX = 60;
+rightScreenX = leftScreenX+48;
+jumpScreenX = room_width-leftScreenX;
 
 if(BROWSER) {
 	width = browser_width;

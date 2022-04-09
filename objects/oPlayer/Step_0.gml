@@ -7,9 +7,9 @@ if(starting < 2) {
 
 //Input();
 if(player == 0) {
-	key_left = keyboard_check(vk_left) or keyboard_check(ord("A"));	
-	key_right = keyboard_check(vk_right) or keyboard_check(ord("D"));	
-	key_jump = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"));	
+	key_left = keyboard_check(vk_left) or keyboard_check(ord("A")) or oGlobalController.leftScreen;	
+	key_right = keyboard_check(vk_right) or keyboard_check(ord("D")) or oGlobalController.rightScreen;	
+	key_jump = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")) or oGlobalController.jumpIsPressed;	
 } else if(player == 1) {
 	key_left = keyboard_check(ord("A"));	
 	key_right = keyboard_check(ord("D"));	
@@ -112,7 +112,7 @@ if (tilemap_get_at_pixel(global.collisionMap, _xbbox + hsp_final, bbox_top) || t
 x += hsp_final;
 	
 //Vertical Tiles
-if (tilemap_get_at_pixel(global.collisionMap, bbox_right, _ybbox + vsp_final) || tilemap_get_at_pixel(global.collisionMap, bbox_left, _ybbox + vsp_final))
+if (tilemap_get_at_pixel(global.collisionMap, bbox_right, _ybbox + vsp_final) || tilemap_get_at_pixel(global.collisionMap, bbox_left, _ybbox + vsp_final)) or (vsp_final >= 8 and (tilemap_get_at_pixel(global.collisionMap, bbox_right, _ybbox + vsp_final/2) || tilemap_get_at_pixel(global.collisionMap, bbox_left, _ybbox + vsp_final/2)))
 {
 	y = y - (_ybbox mod TILE_SIZE);
 	if (sign(vsp) == 1) {
