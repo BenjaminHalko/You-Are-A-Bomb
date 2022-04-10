@@ -38,7 +38,7 @@ if(gameoverNum % 2) {
 	if(newrecord) {
 		draw_set_valign(fa_top);
 		draw_set_color(c_red);
-		draw_text(room_width/2,26,"NEW RECORD");
+		draw_text(room_width/2,26-20*MOBILE,"NEW RECORD");
 	}
 }
 
