@@ -46,6 +46,8 @@ global.particle = true;
 
 global.b = []
 
+global.usingGamepad = false;
+
 repeat(5) array_push(global.b,{
 	wait: irandom(60*5),
 	x: irandom(room_width),
@@ -105,7 +107,7 @@ jumpScreen = false;
 jumpIsPressed = false;
 	
 screenButtonY = room_height-40;
-leftScreenX = 60;
+leftScreenX = 40;
 rightScreenX = leftScreenX+48;
 jumpScreenX = room_width-leftScreenX;
 

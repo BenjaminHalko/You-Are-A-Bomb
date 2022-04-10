@@ -1,5 +1,18 @@
 /// @desc
 
+var _gamepadPressed = false;
+for(var i = 0; i < gamepad_get_device_count(); i++) {
+	if DESKTOP and gamepad_button_check_pressed(i,gp_start) window_set_fullscreen(!window_get_fullscreen());
+	for(var j = gp_face1; j <= gp_face4; j++) if(gamepad_button_check_pressed(i,j)) _gamepadPressed = true;
+	if title and !MOBILE and (gamepad_button_check(i,gp_padu) or gamepad_button_check(i,gp_padd) or abs(gamepad_axis_value(i,gp_axislv)) >= 0.5) and alarm[3] <= 0 {
+		alarm[3] = 20;
+		choice = !choice;
+		audio_sound_pitch(audio_play_sound(snPickup,2,false),1.4);
+	}
+}
+
+if(_gamepadPressed) global.usingGamepad = true;
+
 if(create < room_width div TILE_SIZE - 2) {
 	repeat(2) {
 		amount += irandom_range(-6*(amount > Min and create != room_width div TILE_SIZE div 2 - 1)+2*(create == room_width div TILE_SIZE div 2 - 1)-2*(create == room_width div TILE_SIZE div 2 + 1),6*(amount < Max)*(create != room_width div TILE_SIZE div 2 + 1))*(create != room_width div TILE_SIZE div 2);
@@ -7,8 +20,6 @@ if(create < room_width div TILE_SIZE - 2) {
 		create++;
 	}
 }
-
-
 
 if(timerstart) {
 	if(instance_exists(p1)) global.score[0] += 1/60;
@@ -29,7 +40,7 @@ if title and !MOBILE and (keyboard_check_pressed(vk_up) or keyboard_check_presse
 	audio_sound_pitch(audio_play_sound(snPickup,2,false),1.4);
 }
 
-if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or (mouse_check_button_pressed(mb_left) and MOBILE)) {
+if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or (mouse_check_button_pressed(mb_left) and MOBILE) or _gamepadPressed) {
 	if(title) {
 		if(choice == 0) {
 			p1 = instance_create_layer(room_width/2,room_height/4,"Player",oPlayer);

@@ -5,11 +5,26 @@ if(starting < 2) {
 	exit;
 }
 
-//Input();
-if(player == 0) {
-	key_left = keyboard_check(vk_left) or keyboard_check(ord("A")) or oGlobalController.leftScreen;	
-	key_right = keyboard_check(vk_right) or keyboard_check(ord("D")) or oGlobalController.rightScreen;	
-	key_jump = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")) or oGlobalController.jumpIsPressed;	
+//Input
+var _gpLeft = false;
+var _gpRight = false;
+var _gpJump = false;
+for(var i = 0; i < gamepad_get_device_count(); i++) {
+	if(gamepad_button_check(i,gp_padl) or gamepad_axis_value(i,gp_axislh) <= -0.5) _gpLeft = true;
+	if(gamepad_button_check(i,gp_padr) or gamepad_axis_value(i,gp_axislh) >= 0.5) _gpRight = true;
+	for(var j = gp_face1; j <= gp_face4; j++) if(gamepad_button_check_pressed(i,j)) _gpJump = true;
+}
+
+if(_gpLeft or _gpRight or _gpJump) global.usingGamepad = true;
+
+if(player == 0) or (player == 2 and global.usingGamepad) {
+	key_left = keyboard_check(vk_left) or keyboard_check(ord("A")) or oGlobalController.leftScreen or (_gpLeft and player == 0);	
+	key_right = keyboard_check(vk_right) or keyboard_check(ord("D")) or oGlobalController.rightScreen or (_gpRight and player == 0);	
+	key_jump = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")) or oGlobalController.jumpIsPressed or (_gpJump and player == 0);	
+} else if(global.usingGamepad) { 
+	key_left = _gpLeft;
+	key_right = _gpRight;
+	key_jump = _gpJump;
 } else if(player == 1) {
 	key_left = keyboard_check(ord("A"));	
 	key_right = keyboard_check(ord("D"));	
@@ -70,7 +85,9 @@ hsp = Approach(hsp,0,0.3);
 hsp = median(-maxwalk,maxwalk,hsp+(key_right - key_left)*walkspd);
 vsp += grv;
 
-if((canJump-- > 0 or doubleJump) && key_jump) {
+if(key_jump) jumpTimer = 10;
+
+if((canJump-- > 0 or doubleJump) && jumpTimer > 0) {
 	vsp = jumpspd;
 	if(canJump <= 0) {
 		doubleJump = 0;
@@ -79,9 +96,10 @@ if((canJump-- > 0 or doubleJump) && key_jump) {
 	}
 	audio_play_sound(snJump,2,false);
 	canJump = 0;
-	
+	jumpTimer = 0;
 }
 
+jumpTimer--;
 bounceSpd -= 0.4;
 bounce = max(0,bounce+bounceSpd);
 

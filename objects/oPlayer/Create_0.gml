@@ -30,3 +30,5 @@ startCurve = animcurve_get_channel(PlayerStartCurve,0);
 scale = 0;
 
 player = 0;
+
+jumpTimer = 0;
