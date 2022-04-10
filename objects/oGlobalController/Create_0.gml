@@ -9,14 +9,14 @@ enum OS {
 }
 
 if(os_type == os_operagx) global.ostype = OS.OSOPERA;
-else if(os_type == os_android) global.ostype = OS.OSMOBILE;
 else if(os_browser != browser_not_a_browser) global.ostype = OS.OSBROWSER;
+else if(os_type == os_android) global.ostype = OS.OSMOBILE;
 else global.ostype = OS.OSDESKTOP;
 
 #macro BROWSER (global.ostype == OS.OSBROWSER)
 #macro OPERA (global.ostype == OS.OSOPERA)
 #macro DESKTOP (global.ostype == OS.OSDESKTOP)
-#macro MOBILE (global.ostype == OS.OSMOBILE)
+#macro MOBILE ((global.ostype == OS.OSMOBILE) or (os_type == os_android))
 
 #macro CHALLENGEID "50505bbb-2b2f-4027-88fa-11b1d5a6c826"
 #macro TILE_SIZE 8
@@ -41,6 +41,8 @@ title = true;
 choice = 0;
 
 tutorial = false;
+
+vol = 1;
 
 global.particle = true;
 
