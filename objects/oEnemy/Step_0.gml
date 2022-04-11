@@ -38,7 +38,7 @@ if(timer <= 0 or y > room_height) {
 if(activeId != noone) exit;
 
 //Vertical Tiles
-if (tilemap_get_at_pixel(global.collisionMap, bbox_right, bbox_bottom + vsp_final) || tilemap_get_at_pixel(global.collisionMap, bbox_left, bbox_bottom + vsp_final))
+if (tilemap_get_at_pixel(global.collisionMap, bbox_right, bbox_bottom + vsp_final) || tilemap_get_at_pixel(global.collisionMap, bbox_left, bbox_bottom + vsp_final)) or (vsp_final >= 8 and (tilemap_get_at_pixel(global.collisionMap, bbox_right, bbox_bottom + vsp_final/2) || tilemap_get_at_pixel(global.collisionMap, bbox_left, bbox_bottom + vsp_final/2)))
 {
 	y = y - (bbox_bottom mod TILE_SIZE);
 	if (sign(vsp) == 1) {
