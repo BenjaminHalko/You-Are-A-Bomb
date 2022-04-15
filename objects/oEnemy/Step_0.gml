@@ -1,4 +1,4 @@
-/// @desc
+/// @desc Enemy Behaviour
 
 vsp += grv;
 
@@ -24,7 +24,7 @@ if(timer <= 0 or y > room_height) {
 					instance_create_layer(i-(i mod TILE_SIZE),j-(j mod TILE_SIZE),layer,oWallExplosion);
 				}
 			}
-			with(instance_create_layer(x,y,layer,oPlayerExplode)) image_index = 1;
+			instance_create_layer(x,y,layer,oPlayerExplode);
 			instance_destroy();
 		} else {
 			scale += 0.3;	

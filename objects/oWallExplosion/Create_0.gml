@@ -1,4 +1,4 @@
-/// @desc
+/// @desc Initialize Explosion
 
 p = [];
 

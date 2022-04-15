@@ -1,4 +1,4 @@
-/// @desc
+/// @desc Create Global Variables
 randomize();
 
 enum OS {

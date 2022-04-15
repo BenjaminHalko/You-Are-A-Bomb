@@ -1,3 +1,3 @@
-/// @desc
+/// @desc Draw Enemy
 
 PlayerDraw();

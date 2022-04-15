@@ -1,4 +1,4 @@
-/// @desc
+/// @desc Initialize Enemy
 
 grv = 0.3;
 

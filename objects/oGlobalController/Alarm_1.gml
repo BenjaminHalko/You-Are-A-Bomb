@@ -1,4 +1,4 @@
-/// @desc
+/// @desc Save Score And Flash Text
 
 if(gameoverNum == 0 and !title) {
 	if(OPERA) {

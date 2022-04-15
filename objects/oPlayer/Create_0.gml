@@ -1,4 +1,4 @@
-/// @desc
+/// @desc Initialize Player Variables
 
 startingTime = 10;
 maxTime = startingTime;

@@ -1,3 +1,3 @@
-/// @desc
+/// @desc Activate Tutorial
 
 tutorial = true;

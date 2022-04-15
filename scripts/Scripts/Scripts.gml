@@ -15,7 +15,7 @@ function Approach(a, b, amount) {
 }
 
 function ValuePercent(_x, _a, _b) {
-	return (_x - _a) / (_b - _a)
+	return (_x - _a) / (_b - _a);
 }
 
 function PlayerDraw() {
@@ -61,20 +61,16 @@ function PlayerDraw() {
 	draw_set_valign(fa_middle);
 	draw_set_font(fontPlayer);
 
-	if(timer >= 10) draw_text_transformed(x+1,y-_yExtra,floor(timer),min(1,scale),min(1,scale),0);
-	else draw_text_transformed(x+1,y-_yExtra,string_replace(string_format(timer,1,1)," ","0"),min(1,scale),min(1,scale),0);
+	var _text = string_replace(string_format(timer,1,1)," ","0");
+
+	if(string_length(_text) > 3) draw_text_transformed(x+1,y-_yExtra,floor(timer),min(1,scale),min(1,scale),0);
+	else draw_text_transformed(x+1,y-_yExtra,_text,min(1,scale),min(1,scale),0);
 }
 
 function scale_canvas(_bw,_bh,_cw,_ch) {
-var _aspect = (_bw / _bh);
+	var _aspect = (_bw / _bh);
 
-if ((_cw / _aspect) > _ch)
-    {
-    window_set_size((_ch *_aspect), _ch);
-    }
-else
-    {
-    window_set_size(_cw, (_cw / _aspect));
-    }
+	if ((_cw / _aspect) > _ch) window_set_size((_ch *_aspect), _ch);
+	else window_set_size(_cw, (_cw / _aspect));
 	window_center();
 }

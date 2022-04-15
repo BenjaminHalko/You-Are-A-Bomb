@@ -1,17 +1,23 @@
-/// @desc
+/// @desc Initialize Explosion
 
 if(!global.particle) {
 	instance_destroy();
 	exit;
 }
 
+index = 1;
+
+colors = [
+[ #00244C, #001933, #000C19],
+[ #333333, #2B2B2B, #191919],
+[ #004C35, #003322, #001911]];
+
 p = [];
 
-for(var i = 0; i < 30; i += 1+MOBILE) for(var j = 0; j < 30; j += 1+MOBILE) array_push(p,{
+for(var i = 0; i < 30; i += 1+MOBILE*1.2) for(var j = 0; j < 30; j += 1+MOBILE*1.2) if(point_in_circle(i,j,16,16,16)) array_push(p,{
 	x: x+(i-14),
 	y: y+(j-14),
-	xoffset: i div 2,
-	yoffset: j div 2,
 	vsp: random_range(0.5,-3),
-	hsp: random((i-14)/14)
+	hsp: random((i-14)/14),
+	col: irandom(2)
 });

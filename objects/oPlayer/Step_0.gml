@@ -1,4 +1,5 @@
-/// @desc
+/// @desc Player Behaviour
+
 if(starting < 2) {
 	starting = Approach(starting,2,0.05);
 	scale = animcurve_channel_evaluate(startCurve,min(1,starting));
@@ -47,7 +48,7 @@ if(timer <= 0 or y > room_height) {
 				instance_create_layer(i-(i mod TILE_SIZE),j-(j mod TILE_SIZE),layer,oWallExplosion);
 			}
 		}
-		with(instance_create_layer(x,y,layer,oPlayerExplode)) image_index = other.image_index;
+		with(instance_create_layer(x,y,layer,oPlayerExplode)) index = other.image_index;
 		instance_create_layer(x,y,layer,oPlayerExplosion);
 		instance_destroy();
 	} else {

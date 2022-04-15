@@ -1,4 +1,4 @@
-/// @desc
+/// @desc Important Global Stuff
 
 var _gamepadPressed = false;
 for(var i = 0; i < gamepad_get_device_count(); i++) {
@@ -91,11 +91,37 @@ if MOBILE {
 		var _px = device_mouse_x(i);
 		var _py = device_mouse_y(i);
 		
-		if(point_in_rectangle(_px,_py,leftScreenX-24,_top,leftScreenX+32,_bottom)) leftScreen = true;
-		else if(point_in_rectangle(_px,_py,rightScreenX-32,_top,rightScreenX+24,_bottom)) rightScreen = true;
-		else if(point_in_circle(_px,_py,jumpScreenX,screenButtonY,24)) {
+		if(point_in_rectangle(_px,_py,leftScreenX-48,_top,leftScreenX+24,_bottom)) leftScreen = true;
+		else if(point_in_rectangle(_px,_py,rightScreenX-24,_top,rightScreenX+48,_bottom)) rightScreen = true;
+		else if(point_in_circle(_px,_py,jumpScreenX,screenButtonY,48)) {
 			jumpScreen = true;
 			if(!_jumpHeld) jumpIsPressed = true;
 		}
 	}
+	
+	if(keyboard_check_pressed(vk_backspace) and !BROWSER) game_end(); 
+}
+
+if DESKTOP {
+	if(keyboard_check_pressed(vk_escape)) game_end();
+	if(keyboard_check_pressed(vk_f4)) window_set_fullscreen(!window_get_fullscreen());
+}
+
+if(keyboard_check_pressed(ord("1")) and vol > 0) {
+	vol -= .1;
+	audio_master_gain(vol);
+	audio_sound_pitch(audio_play_sound(snPickup,2,false),0.7);	
+}
+
+if(keyboard_check_pressed(ord("2")) and vol < 1) {
+	vol += .1;
+	audio_master_gain(vol);
+	audio_sound_pitch(audio_play_sound(snPickup,2,false),1.4);
+}
+
+if(keyboard_check_pressed(vk_tab)) {
+	global.particle = !global.particle;
+
+	var _pitch = [0.7,1.4];
+	audio_sound_pitch(audio_play_sound(snPickup,2,false),_pitch[global.particle]);	
 }
