@@ -4,7 +4,7 @@ draw_set_alpha(0.8);
 for(var i = 0; i < array_length(p); i++) {
 	draw_point_color(p[i].x,p[i].y,colors[index][p[i].col]);
 	p[i].x += p[i].hsp;
-	p[i].vsp += 0.1;
+	p[i].vsp += p[i].grv;
 	p[i].y += p[i].vsp;
 	if(p[i].y > room_height) {
 		array_delete(p,i,1);

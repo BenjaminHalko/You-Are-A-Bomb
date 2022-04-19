@@ -86,7 +86,7 @@ if MOBILE {
 	jumpIsPressed = false;
 	
 	for(var i = 0; i < 5; i++) {
-		if(!device_mouse_check_button(i, mb_left)) continue;
+		if(!device_mouse_check_button(i, mb_left) and !device_mouse_check_button(i, mb_right)) continue;
 		
 		var _px = device_mouse_x(i);
 		var _py = device_mouse_y(i);

@@ -19,5 +19,6 @@ for(var i = 0; i < 30; i += 1+MOBILE*1.2) for(var j = 0; j < 30; j += 1+MOBILE*1
 	y: y+(j-14),
 	vsp: random_range(0.5,-3),
 	hsp: random((i-14)/14),
-	col: irandom(2)
+	col: irandom(2),
+	grv: random_range(0.1,0.2)
 });
