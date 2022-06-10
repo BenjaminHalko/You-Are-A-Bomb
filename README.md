@@ -1,4 +1,4 @@
-# You-Are-A-Bomb
+# You Are A Bomb
 Be a happy little bomb. Jump around and eat other bombs. Just don't explode, or you will be sad!
 
 
