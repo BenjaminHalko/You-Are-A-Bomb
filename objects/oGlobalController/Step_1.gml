@@ -22,7 +22,9 @@ if title and !MOBILE and (keyboard_check_pressed(vk_up) or keyboard_check_presse
 	audio_sound_pitch(audio_play_sound(snPickup,2,false),1.4);
 }
 
-if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or (mouse_check_button_pressed(mb_left) and MOBILE) or _gamepadPressed) and !instance_exists(oGameWait) {
+if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_game_running) {
+	rollback_start_game();
+} else if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or (mouse_check_button_pressed(mb_left) and MOBILE) or _gamepadPressed) {
 	if(title) {
 		with(oGameManager) {
 			if(other.choice == 0) {
@@ -30,7 +32,6 @@ if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keybo
 				playersLeft = 1;
 				p1 = instance_create_layer(room_width/2,room_height/4,"Instances",oPlayer);
 				p2 = noone;
-				alarm[2] = room_speed*5;
 			} else if(other.choice == 1) {
 				global.usingMultiplayer = false;
 				playersLeft = 2;
@@ -39,16 +40,14 @@ if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keybo
 				p2 = instance_create_layer(room_width/3*2,room_height/4,"Instances",oPlayer);
 				p2.player = 2;
 				p2.image_index = 2;
-				alarm[2] = room_speed*5;
 			} else {
 				global.usingMultiplayer = true;
 				if (!rollback_join_game()) {
-					rollback_create_game(2,false);
+					rollback_create_game(2,!OPERA);
 				}
-				instance_create_layer(0,0,layer,oGameWait);
 				playerNames = ["PLAYER 1","PLAYER 2","PLAYER 3","PLAYER 4"];
 			}
-			
+			alarm[2] = room_speed*5;
 			alarm[0] = -1;
 			alarm[1] = -1;
 			gameoverNum = 0;
@@ -63,7 +62,7 @@ if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keybo
 		logo = 0;
 		
 		global.score = [0,0,0,0];
-	} else if(!instance_exists(oPlayer) and oGameWait.gameoverNum > 1) title = true;
+	} else if(oGameManager.playersLeft == 0 and oGameManager.gameoverNum > 1 and !global.usingMultiplayer) title = true;
 }
 
 if(title) logo = Approach(logo,1,0.05);

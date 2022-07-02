@@ -2,7 +2,7 @@
 
 if(global.usingMultiplayer and !rollback_game_running) exit;
 
-if(other.timerstart and !oGlobalController.title) { tutorial = false; alarm[2] = -1;}
+if(timerstart and !oGlobalController.title) { tutorial = false; alarm[2] = -1;}
 
 if(playersLeft == 0 and alarm[1] <= 0) alarm[1] = 30;
 
@@ -18,10 +18,10 @@ if(timerstart) {
 	if playersLeft != 0 {
 		if alarm[0] <= 0 alarm[0] = room_speed-room_speed/4*(playersLeft == 2);
 	} else alarm[0] = -1;
-	if(instance_exists(p1) and !p1.defeated and p1.starting == 2) global.score[0] += 1/60;
-	if(instance_exists(p2) and !p2.defeated and p2.starting == 2) global.score[1] += 1/60;
-	if(instance_exists(p3) and !p3.defeated and p3.starting == 2) global.score[2] += 1/60;
-	if(instance_exists(p4) and !p4.defeated and p4.starting == 2) global.score[3] += 1/60;
+	if(instance_exists(p1) and !p1.defeated) global.score[0] += 1/60;
+	if(instance_exists(p2) and !p2.defeated) global.score[1] += 1/60;
+	if(instance_exists(p3) and !p3.defeated) global.score[2] += 1/60;
+	if(instance_exists(p4) and !p4.defeated) global.score[3] += 1/60;
 } else {
 	with(oPlayer) if(timeStart) {
 		other.timerstart = true;
@@ -43,7 +43,6 @@ if keyboard_check_pressed(vk_escape) and !oGlobalController.title {
 	timerstart = false;
 	instance_destroy(oPlayer);
 	instance_destroy(oEnemy);
-	instance_destroy(oGameWait);
 	global.usingMultiplayer = false;
 	playerNames = ["PLAYER 1","PLAYER 2","PLAYER 3","PLAYER 4"];
 }

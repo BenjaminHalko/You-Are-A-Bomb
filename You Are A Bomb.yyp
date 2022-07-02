@@ -18,7 +18,6 @@
     {"id":{"name":"oPlayerExplosion","path":"objects/oPlayerExplosion/oPlayerExplosion.yy",},"order":3,},
     {"id":{"name":"oWallExplosion","path":"objects/oWallExplosion/oWallExplosion.yy",},"order":2,},
     {"id":{"name":"snLand","path":"sounds/snLand/snLand.yy",},"order":2,},
-    {"id":{"name":"oGameWait","path":"objects/oGameWait/oGameWait.yy",},"order":8,},
     {"id":{"name":"sLogo","path":"sprites/sLogo/sLogo.yy",},"order":4,},
     {"id":{"name":"oGlobalController","path":"objects/oGlobalController/oGlobalController.yy",},"order":1,},
     {"id":{"name":"sScreenButtons","path":"sprites/sScreenButtons/sScreenButtons.yy",},"order":6,},

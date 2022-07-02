@@ -5,14 +5,17 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_top);
 draw_set_font(fontGui);
 
+if(global.usingMultiplayer and !rollback_game_running)
+draw_text(room_width/2,room_height/2,string("WAITING FOR PLAYERS...\n\nPRESS ENTER TO START EARLY"));
+
 if(title) {
 	if(!MOBILE) {
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		draw_text(room_width/2-30,room_height-70,"1 PLAYER");
-		draw_text(room_width/2-30,room_height-54,"2 PLAYER");
-		draw_text(room_width/2-30,room_height-38,"2-4 PLAYER ONLINE");
-		draw_text(room_width/2-40,room_height-70+16*choice,">");
+		draw_text(room_width/2-30,room_height-76,"1 PLAYER");
+		draw_text(room_width/2-30,room_height-60,"2 PLAYER");
+		draw_text(room_width/2-30,room_height-38,"ONLINE MULTIPLAYER");
+		draw_text(room_width/2-40,room_height-76+16*choice+6*(choice == 2),">");
 		draw_set_halign(fa_center);
 	}
 	draw_set_valign(fa_bottom);
