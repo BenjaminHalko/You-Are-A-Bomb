@@ -9,7 +9,7 @@ vsp_final -= vsp_f;
 bounceSpd -= 0.4;
 bounce = max(0,bounce+bounceSpd);
 
-if(!instance_exists(activeId)) activeId = noone;
+if(!instance_exists(activeId) or activeId.defeated) activeId = noone;
 
 if(timer <= 0 or y > room_height) {
 	var _explosionSize = random_range(4,6)*TILE_SIZE;

@@ -21,10 +21,10 @@ if(!global.usingMultiplayer) {
 
 gameoverNum++;
 
-if(gameoverNum == 6 and global.usingMultiplayer) {
+if(gameoverNum == 8 and global.usingMultiplayer) {
 	alarm[0] = -1;
 	alarm[1] = -1;
-	playersLeft = 4;
+	playersLeft = instance_number(oPlayer);
 	gameoverNum = 0;
 	newrecord = false;
 	timerstart = false;

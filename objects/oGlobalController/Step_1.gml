@@ -43,7 +43,7 @@ if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_ga
 			} else {
 				global.usingMultiplayer = true;
 				if (!rollback_join_game()) {
-					rollback_create_game(2,!OPERA);
+					rollback_create_game(4,!OPERA);
 				}
 				playerNames = ["PLAYER 1","PLAYER 2","PLAYER 3","PLAYER 4"];
 			}
