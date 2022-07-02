@@ -20,7 +20,7 @@ if(timer <= 0 or y > room_height) {
 	 		for(var i = x-_explosionSize; i < x+_explosionSize; i+=TILE_SIZE) {
 				for(var j = y-_explosionSize; j < y+_explosionSize; j+=TILE_SIZE) {
 					if(tilemap_get_at_pixel(global.collisionMap,i,j) != 1 or !point_in_circle(i,j,x,y,_explosionSize)) continue;
-					tilemap_set_at_pixel(global.collisionMap,0,i,j);
+					array_push(oGameManager.destroyList,[i,j]);
 					instance_create_layer(i-(i mod TILE_SIZE),j-(j mod TILE_SIZE),layer,oWallExplosion);
 				}
 			}

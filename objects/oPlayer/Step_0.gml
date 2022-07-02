@@ -1,5 +1,9 @@
 /// @desc Player Behaviour
 
+if(global.usingMultiplayer and !rollback_game_running) exit;
+
+if(defeated) exit;
+
 if(starting < 2) {
 	starting = Approach(starting,2,0.05);
 	scale = animcurve_channel_evaluate(startCurve,min(1,starting));
@@ -18,7 +22,12 @@ for(var i = 0; i < gamepad_get_device_count(); i++) {
 
 if(_gpLeft or _gpRight or _gpJump) global.usingGamepad = true;
 
-if(player == 0) or (player == 2 and global.usingGamepad) {
+if (global.usingMultiplayer) {
+	var _input = rollback_get_input();
+	key_left = _input.left;
+	key_right = _input.right;
+	key_jump = _input.jump_pressed;
+} else if(player == 0) or (player == 2 and global.usingGamepad) {
 	key_left = keyboard_check(vk_left) or keyboard_check(ord("A")) or oGlobalController.leftScreen or (_gpLeft and player == 0);	
 	key_right = keyboard_check(vk_right) or keyboard_check(ord("D")) or oGlobalController.rightScreen or (_gpRight and player == 0);	
 	key_jump = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")) or oGlobalController.jumpIsPressed or (_gpJump and player == 0);	
@@ -37,20 +46,21 @@ if(player == 0) or (player == 2 and global.usingGamepad) {
 }
 
 if(timer <= 0 or y > room_height) {
-	oGlobalController.timerstart = false;
+	oGameManager.timerstart = false;
 	var _explosionSize = 6*TILE_SIZE;
 	
 	if(scale > 2) {
  		for(var i = x-_explosionSize; i < x+_explosionSize; i+=TILE_SIZE) {
 			for(var j = y-_explosionSize; j < y+_explosionSize; j+=TILE_SIZE) {
 				if(tilemap_get_at_pixel(global.collisionMap,i,j) != 1 or !point_in_circle(i,j,x,y,_explosionSize)) continue;
-				tilemap_set_at_pixel(global.collisionMap,0,i,j);
+				array_push(oGameManager.destroyList,[i,j]);
 				instance_create_layer(i-(i mod TILE_SIZE),j-(j mod TILE_SIZE),layer,oWallExplosion);
 			}
 		}
 		with(instance_create_layer(x,y,layer,oPlayerExplode)) index = other.image_index;
 		instance_create_layer(x,y,layer,oPlayerExplosion);
-		instance_destroy();
+		defeated = true;
+		oGameManager.playersLeft -= 1;
 	} else {
 		scale += 0.3;
 	}
@@ -94,6 +104,8 @@ if((canJump-- > 0 or doubleJump) && jumpTimer > 0) {
 		doubleJump = 0;
 		var _jump = instance_create_depth(x,y-round(bounce),depth+1,oPlayerJump);
 		if(player == 2) _jump.col = #00996B;
+		else if(player == 3) _jump.col = #99007A;
+		else if(player == 4) _jump.col = #995200;
 	}
 	audio_play_sound(snJump,2,false);
 	canJump = 0;

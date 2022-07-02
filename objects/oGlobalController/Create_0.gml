@@ -24,23 +24,9 @@ else global.ostype = OS.OSDESKTOP;
 surface_resize(application_surface,room_width,room_height);
 if(DESKTOP) window_set_size(room_width*3,room_height*3);
 
-create = 2;
-minAmount = 4;
-amount = 0;
-
-Min = 4;
-Max = 8;
-
-timerstart = false;
-
-gameoverNum = 0;
-newrecord = false;
-
 title = true;
 
 choice = 0;
-
-tutorial = false;
 
 vol = 1;
 
@@ -72,10 +58,8 @@ for(var i = 0; i < array_length(global.frontgrid); i++) {
 	global.frontgrid[i] = _amount;
 }
 
-global.score = [0,0];
+global.score = [0,0,0,0];
 global.hiscore = 0;
-
-
 
 if(OPERA) {
 	try gxc_challenge_get_global_scores(function(_status, _result) {
@@ -99,9 +83,6 @@ audio_sound_gain(song,0.6,0);
 
 curve = animcurve_get_channel(PlayerStartCurve,0);
 logo = 0;
-
-p1 = noone;
-p2 = noone;
 
 leftScreen = false;
 rightScreen = false;
