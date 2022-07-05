@@ -16,7 +16,7 @@ if(create < room_width div TILE_SIZE - 2) {
 
 if(timerstart) {
 	if playersLeft != 0 {
-		if alarm[0] <= 0 alarm[0] = room_speed-room_speed/4*max(2.5,playersLeft - 1);
+		if alarm[0] <= 0 alarm[0] = room_speed-room_speed/4*min(3,playersLeft - 1);
 	} else alarm[0] = -1;
 	if(instance_exists(p1) and !p1.defeated) global.score[0] += 1/60;
 	if(instance_exists(p2) and !p2.defeated) global.score[1] += 1/60;

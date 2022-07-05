@@ -44,7 +44,7 @@ if(MOBILE) {
 		c_blue,
 		c_lime,
 		c_fuchsia,
-		c_orange];
+		#FFAA00];
 		for(var i = 0; i < 4; i++) {
 			draw_text_transformed_color(room_width/5*(i+1)+16*(i-1.5),6,playerNames[i],min(1,(room_width/5+6)/string_width(playerNames[i])),1,0,_col[i],_col[i],c_white,c_white,1);
 			draw_text(room_width/5*(i+1)+16*(i-1.5),6,"\n"+string(global.score[i] div 60)+":"+string_replace(string_format(global.score[i] % 60,2,2)," ","0"));

@@ -32,6 +32,7 @@ if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_ga
 				playersLeft = 1;
 				p1 = instance_create_layer(room_width/2,room_height/4,"Instances",oPlayer);
 				p2 = noone;
+				alarm[2] = room_speed*5;
 			} else if(other.choice == 1) {
 				global.usingMultiplayer = false;
 				playersLeft = 2;
@@ -40,6 +41,7 @@ if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_ga
 				p2 = instance_create_layer(room_width/3*2,room_height/4,"Instances",oPlayer);
 				p2.player = 2;
 				p2.image_index = 2;
+				alarm[2] = room_speed*5;
 			} else {
 				global.usingMultiplayer = true;
 				if (!rollback_join_game()) {
@@ -47,7 +49,6 @@ if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_ga
 				}
 				playerNames = ["PLAYER 1","PLAYER 2","PLAYER 3","PLAYER 4"];
 			}
-			alarm[2] = room_speed*5;
 			alarm[0] = -1;
 			alarm[1] = -1;
 			gameoverNum = 0;
