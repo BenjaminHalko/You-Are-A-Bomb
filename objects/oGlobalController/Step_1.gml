@@ -46,7 +46,8 @@ if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_ga
 				global.usingMultiplayer = true;
 				if (!rollback_join_game()) {
 					rollback_create_game(4,!OPERA);
-				}
+					other.multiplayerCreated = true;
+				} else other.multiplayerCreated = false;
 				playerNames = ["PLAYER 1","PLAYER 2","PLAYER 3","PLAYER 4"];
 			}
 			alarm[0] = -1;

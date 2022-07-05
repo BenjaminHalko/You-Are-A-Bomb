@@ -3,13 +3,17 @@
 global.usingMultiplayer = false;
 
 rollback_define_player(oPlayer);
-
+/*
 rollback_define_input({
 	left: [vk_left,ord("A")],
 	right: [vk_right,ord("D")],
 	jump: [vk_space,vk_shift,vk_control,vk_up,ord("W")]
+});*/
+rollback_define_input({
+	left: vk_left,
+	right: vk_right,
+	jump: vk_space
 });
-
 gameoverNum = 0;
 newrecord = false;
 

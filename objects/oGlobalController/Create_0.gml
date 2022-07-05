@@ -94,6 +94,8 @@ leftScreenX = 40;
 rightScreenX = leftScreenX+48;
 jumpScreenX = room_width-leftScreenX;
 
+multiplayerCreated = false;
+
 if(BROWSER) {
 	width = browser_width;
 	height = browser_height;
