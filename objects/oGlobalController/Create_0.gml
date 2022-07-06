@@ -34,6 +34,8 @@ vol = 1;
 
 canContinue = false;
 
+create = 2;
+
 global.particle = true;
 
 global.b = []

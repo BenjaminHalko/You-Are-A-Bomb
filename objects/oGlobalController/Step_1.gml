@@ -34,6 +34,17 @@ if keyboard_check_pressed(vk_escape) and !title {
 	instance_destroy(oEnemy);
 	global.usingMultiplayer = false;
 	oGameManager.playerNames = ["PLAYER 1","PLAYER 2","PLAYER 3","PLAYER 4"];
+	oGameManager.tutorial = false;
+	oGameManager.alarm[2] = -1;
+}
+
+if(global.usingMultiplayer and !rollback_game_running) {
+	if(create < room_width div TILE_SIZE - 2) {
+		repeat(2) {
+			for(var i = 0; i < room_height div TILE_SIZE; i++) tilemap_set(global.collisionMap,0,create,i);	
+			create++;
+		}
+	}
 }
 
 if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_game_running and canContinue) {
@@ -69,6 +80,7 @@ if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_ga
 					other.multiplayerCreated = true;
 				} else other.multiplayerCreated = false;
 				playerNames = ["PLAYER 1","PLAYER 2","PLAYER 3","PLAYER 4"];
+				other.create = 2;
 			}
 			alarm[0] = -1;
 			alarm[1] = -1;

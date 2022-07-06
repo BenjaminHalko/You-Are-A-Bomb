@@ -12,6 +12,8 @@ with(oGameManager) {
 		rollback_create_game(4,!OPERA);
 		other.multiplayerCreated = true;
 	} else other.multiplayerCreated = false;
-	playerNames = ["PLAYER 1","PLAYER 2","PLAYER 3","PLAYER 4"];	
+	playerNames = ["PLAYER 1","PLAYER 2","PLAYER 3","PLAYER 4"];
+	create = 2;
+	other.create = 2;
 }
 title = false;

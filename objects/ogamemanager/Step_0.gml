@@ -7,6 +7,7 @@ if(timerstart and !oGlobalController.title) { tutorial = false; alarm[2] = -1;}
 if(playersLeft == 0 and alarm[1] <= 0) alarm[1] = 30;
 
 if(create < room_width div TILE_SIZE - 2) {
+	if create == 2 amount = minAmount+irandom_range(Min,Max);
 	repeat(2) {
 		amount += irandom_range(-6*(amount > Min and create != room_width div TILE_SIZE div 2 - 1)+2*(create == room_width div TILE_SIZE div 2 - 1)-2*(create == room_width div TILE_SIZE div 2 + 1),6*(amount < Max)*(create != room_width div TILE_SIZE div 2 + 1))*(create != room_width div TILE_SIZE div 2);
 		for(var i = 0; i < room_height div TILE_SIZE; i++) tilemap_set(global.collisionMap,i >= room_height div TILE_SIZE -(minAmount+abs(amount)),create,i);	
