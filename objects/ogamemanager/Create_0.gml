@@ -2,18 +2,6 @@
 
 global.usingMultiplayer = false;
 
-rollback_define_player(oPlayer);
-/*
-rollback_define_input({
-	left: [vk_left,ord("A")],
-	right: [vk_right,ord("D")],
-	jump: [vk_space,vk_shift,vk_control,vk_up,ord("W")]
-});*/
-rollback_define_input({
-	left: vk_left,
-	right: vk_right,
-	jump: vk_space
-});
 gameoverNum = 0;
 newrecord = false;
 
@@ -23,7 +11,11 @@ p1 = noone;
 p2 = noone;
 p3 = noone;
 p4 = noone;
+total = 0;
+playerScores = [0,0,0,0];
 playersLeft = 0;
+startTime = 0;
+totalSubtract = 0;
 
 create = 2;
 minAmount = 4;

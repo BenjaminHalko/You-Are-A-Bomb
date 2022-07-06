@@ -18,18 +18,21 @@ if(timerstart) {
 	if playersLeft != 0 {
 		if alarm[0] <= 0 alarm[0] = room_speed-room_speed/4*min(3,playersLeft - 1);
 	} else alarm[0] = -1;
-	if(instance_exists(p1) and !p1.defeated) global.score[0] += 1/60;
-	if(instance_exists(p2) and !p2.defeated) global.score[1] += 1/60;
-	if(instance_exists(p3) and !p3.defeated) global.score[2] += 1/60;
-	if(instance_exists(p4) and !p4.defeated) global.score[3] += 1/60;
-} else {
-	with(oPlayer) if(timeStart) {
-		other.timerstart = true;
-		with(oPlayer) timeStart = true;
+	
+	if(global.usingMultiplayer) total = (rollback_current_frame-totalSubtract)/60;
+	else total += 1/60;
+	if(instance_exists(p1) and !p1.defeated) playerScores[0] = total;
+	if(instance_exists(p2) and !p2.defeated) playerScores[1] = total;
+	if(instance_exists(p3) and !p3.defeated) playerScores[2] = total;
+	if(instance_exists(p4) and !p4.defeated) playerScores[3] = total;
+} else if(global.usingMultiplayer) {
+	totalSubtract = rollback_current_frame;
+	for(var i = 0; i < instance_number(oPlayer); i++) {
+		instance_find(oPlayer,i).x = room_width/(instance_number(oPlayer)+1)*(i+1);	
 	}
 }
 
-if(!global.usingMultiplayer or rollback_sync_on_frame()) {
+if array_length(destroyList) > 0 and (!global.usingMultiplayer or rollback_sync_on_frame()) {
 	while(array_length(destroyList) > 0) {
 		var _data = array_pop(destroyList);
 		tilemap_set_at_pixel(global.collisionMap,0,_data[0],_data[1]);

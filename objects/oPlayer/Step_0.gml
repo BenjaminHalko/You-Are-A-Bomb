@@ -1,12 +1,10 @@
 /// @desc Player Behaviour
 
-if(global.usingMultiplayer and !rollback_game_running) exit;
-
 if(defeated) exit;
 
 if(starting < 2) {
 	starting = Approach(starting,2,0.05);
-	scale = animcurve_channel_evaluate(startCurve,min(1,starting));
+	scale = animcurve_channel_evaluate(animcurve_get_channel(PlayerStartCurve,0),min(1,starting));
 	exit;
 }
 
@@ -24,7 +22,6 @@ if(_gpLeft or _gpRight or _gpJump) global.usingGamepad = true;
 
 if (global.usingMultiplayer) {
 	var _input = rollback_get_input();
-	show_debug_message(json_stringify(rollback_get_input()))
 	key_left = _input.left;
 	key_right = _input.right;
 	key_jump = _input.jump_pressed;
@@ -68,9 +65,9 @@ if(timer <= 0 or y > room_height) {
 	
 	timer = 0;
 	exit;
-} else if(timeStart) timer -= 1/60;
+} else if(oGameManager.timerstart) timer -= 1/60;
 
-if(key_left != key_right) timeStart = true;
+if(key_left != key_right) oGameManager.timerstart = true;
 
 with(oEnemy) {
 	var _radius = 24;

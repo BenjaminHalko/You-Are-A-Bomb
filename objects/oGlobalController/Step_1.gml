@@ -44,6 +44,12 @@ if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_ga
 				alarm[2] = room_speed*5;
 			} else {
 				global.usingMultiplayer = true;
+				rollback_define_player(oPlayer);
+				rollback_define_input({
+					left: [vk_left,ord("A")],
+					right: [vk_right,ord("D")],
+					jump: [vk_space,vk_shift,vk_control,vk_up,ord("W")]
+				});
 				if (!rollback_join_game()) {
 					rollback_create_game(4,!OPERA);
 					other.multiplayerCreated = true;
@@ -57,13 +63,14 @@ if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_ga
 			timerstart = false;
 			create = 2;
 			amount = minAmount+irandom_range(Min,Max);
+			playerScores = [0,0,0,0];
+			total = 0;
+			totalSubtract = 0;
 		}
 		instance_destroy(oEnemy);
 		
 		title = false;
 		logo = 0;
-		
-		global.score = [0,0,0,0];
 	} else if(oGameManager.playersLeft == 0 and oGameManager.gameoverNum > 1 and !global.usingMultiplayer) title = true;
 }
 

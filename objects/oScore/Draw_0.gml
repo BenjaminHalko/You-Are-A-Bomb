@@ -8,6 +8,3 @@ draw_set_color(c_white);
 draw_set_alpha(image_alpha);
 draw_text(x,y-floor((1-image_alpha)*3),amount)
 draw_set_alpha(1);
-
-image_alpha -= 0.05;
-if(image_alpha <= 0) instance_destroy();

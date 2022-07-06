@@ -11,10 +11,10 @@ vsp_f = 0;
 vsp_final = 0;
 
 if global.usingMultiplayer {
-	maxTime = max(2.5,3-max(global.score[0],global.score[1],global.score[2],global.score[3])/600+(max(global.score[0],global.score[1],global.score[2],global.score[3]) <= 10)*.5);
+	maxTime = max(2.5,3-oGameManager.total/600+(oGameManager.total <= 10)*.5);
 	if oGameManager.playersLeft == 1 maxTime = min(maxTime,2.5);
 } else
-	maxTime = max(2.5,3-max(global.score[0],global.score[1],global.score[2],global.score[3])/1200+(max(global.score[0],global.score[1],global.score[2],global.score[3]) <= 10));
+	maxTime = max(2.5,3-oGameManager.total/1200+(oGameManager.total <= 10));
 timer = maxTime;
 
 scale = 1;

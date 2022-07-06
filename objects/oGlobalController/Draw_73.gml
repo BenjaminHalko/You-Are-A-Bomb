@@ -6,7 +6,7 @@ draw_set_valign(fa_top);
 draw_set_font(fontGui);
 
 if(global.usingMultiplayer and !rollback_game_running) {
-	if(multiplayerCreated)
+	if(multiplayerCreated) or true
 		draw_text(room_width/2,room_height/2,string("WAITING FOR PLAYERS...\n\nPRESS ENTER TO START EARLY"));
 	else
 		draw_text(room_width/2,room_height/2,string("WAITING FOR PLAYERS..."));

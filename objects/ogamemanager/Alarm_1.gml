@@ -3,12 +3,12 @@
 if(!global.usingMultiplayer) {
 	if(gameoverNum == 0 and !oGlobalController.title) {
 		if(OPERA) {
-			try gxc_challenge_submit_score(max(global.score[0],global.score[1])*1000,undefined,{challengeId: CHALLENGEID});
+			try gxc_challenge_submit_score(max(playerScores[0],playerScores[1])*1000,undefined,{challengeId: CHALLENGEID});
 			catch(_error) show_debug_message(_error);
 		}
 	
-		if(max(global.score[0],global.score[1]) > global.hiscore) {
-			global.hiscore = max(global.score[0],global.score[1]);
+		if(max(playerScores[0],playerScores[1]) > global.hiscore) {
+			global.hiscore = max(playerScores[0],playerScores[1]);
 			newrecord = true;
 			if(!OPERA) {
 				var _file = file_text_open_write("score");
@@ -36,6 +36,6 @@ if(gameoverNum == 8 and global.usingMultiplayer) {
 		player = player_id + 1;
 		if player_id != 0 image_index = player_id + 1;
 	}
-	global.score = [0,0,0,0];
+	playerScores = [0,0,0,0];
 }
 else if(gameoverNum > 8) title = true;

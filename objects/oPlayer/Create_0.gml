@@ -2,7 +2,6 @@
 
 if variable_instance_exists(id,"player_id") {
 	y = room_height/4;
-	x = room_width/5*(player_id+1)
 	if player_id == 0 {
 		oGameManager.p1 = id;
 	} else if player_id == 1 {
@@ -17,7 +16,6 @@ if variable_instance_exists(id,"player_id") {
 startingTime = 10;
 maxTime = startingTime;
 timer = maxTime;
-timeStart = false;
 starting = 0;
 
 hsp = 0;
@@ -34,14 +32,11 @@ bounce = 0
 bounceSpd = 0;
 
 scale = 0;
-startCurve = animcurve_get_channel(PlayerStartCurve,0);
 
 grv = 0.6;
 walkspd = 0.5;
 maxwalk = 2;
 jumpspd = -7;
-
-scale = 1;
 
 player = 0;
 

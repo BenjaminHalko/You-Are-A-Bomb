@@ -58,10 +58,9 @@ for(var i = 0; i < array_length(global.frontgrid); i++) {
 	global.frontgrid[i] = _amount;
 }
 
-global.score = [0,0,0,0];
 global.hiscore = 0;
 
-if(OPERA) {
+if(OPERA and false) {
 	try gxc_challenge_get_global_scores(function(_status, _result) {
 		try if (_status == 200 and array_length(_result.data.scores) > 0) global.hiscore = _result.data.scores[0].score/1000;
 		catch(_error) show_debug_message(_error);
@@ -101,3 +100,5 @@ if(BROWSER) {
 	height = browser_height;
 	scale_canvas(480,256,width,height);
 }
+
+title = true;
