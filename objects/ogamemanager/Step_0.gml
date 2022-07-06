@@ -28,6 +28,7 @@ if(timerstart) {
 } else if(global.usingMultiplayer) {
 	totalSubtract = rollback_current_frame;
 	for(var i = 0; i < instance_number(oPlayer); i++) {
+		if instance_find(oPlayer,i).timer == 0 continue;
 		instance_find(oPlayer,i).x = room_width/(instance_number(oPlayer)+1)*(i+1);	
 	}
 }
@@ -37,15 +38,4 @@ if array_length(destroyList) > 0 and (!global.usingMultiplayer or rollback_sync_
 		var _data = array_pop(destroyList);
 		tilemap_set_at_pixel(global.collisionMap,0,_data[0],_data[1]);
 	}
-}
-
-if keyboard_check_pressed(vk_escape) and !oGlobalController.title {
-	rollback_leave_game();
-	oGlobalController.title = true;
-	playersLeft = 0;
-	timerstart = false;
-	instance_destroy(oPlayer);
-	instance_destroy(oEnemy);
-	global.usingMultiplayer = false;
-	playerNames = ["PLAYER 1","PLAYER 2","PLAYER 3","PLAYER 4"];
 }

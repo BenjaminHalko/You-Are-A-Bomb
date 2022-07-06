@@ -16,13 +16,27 @@ for(var i = 0; i < gamepad_get_device_count(); i++) {
 if(_gamepadPressed) global.usingGamepad = true;
 
 if title and !MOBILE and (keyboard_check_pressed(vk_up) or keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("W")) or keyboard_check_pressed(ord("S"))) {
-	choice += (keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S"))) - (keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")));
-	if choice < 0 choice = 2;
-	else if choice > 2 choice = 0;
+	if(challenge) choice = !choice;
+	else {
+		choice += (keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S"))) - (keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")));
+		if choice < 0 choice = 2;
+		else if choice > 2 choice = 0;
+	}
 	audio_sound_pitch(audio_play_sound(snPickup,2,false),1.4);
 }
 
-if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_game_running) {
+if keyboard_check_pressed(vk_escape) and !title {
+	if(global.usingMultiplayer) rollback_leave_game();
+	title = true;
+	oGameManager.playersLeft = 0;
+	oGameManager.timerstart = false;
+	instance_destroy(oPlayer);
+	instance_destroy(oEnemy);
+	global.usingMultiplayer = false;
+	oGameManager.playerNames = ["PLAYER 1","PLAYER 2","PLAYER 3","PLAYER 4"];
+}
+
+if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_game_running and canContinue) {
 	rollback_start_game();
 } else if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or (mouse_check_button_pressed(mb_left) and MOBILE) or _gamepadPressed) {
 	if(title) {
@@ -44,12 +58,12 @@ if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_ga
 				alarm[2] = room_speed*5;
 			} else {
 				global.usingMultiplayer = true;
-				rollback_define_player(oPlayer);
 				rollback_define_input({
 					left: [vk_left,ord("A")],
 					right: [vk_right,ord("D")],
 					jump: [vk_space,vk_shift,vk_control,vk_up,ord("W")]
 				});
+				rollback_define_player(oPlayer);
 				if (!rollback_join_game()) {
 					rollback_create_game(4,!OPERA);
 					other.multiplayerCreated = true;
@@ -68,7 +82,7 @@ if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_ga
 			totalSubtract = 0;
 		}
 		instance_destroy(oEnemy);
-		
+		canContinue = false;
 		title = false;
 		logo = 0;
 	} else if(oGameManager.playersLeft == 0 and oGameManager.gameoverNum > 1 and !global.usingMultiplayer) title = true;

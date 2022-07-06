@@ -24,11 +24,15 @@ else global.ostype = OS.OSDESKTOP;
 surface_resize(application_surface,room_width,room_height);
 if(DESKTOP) window_set_size(room_width*3,room_height*3);
 
+challenge = gxc_get_query_param("challenge") == CHALLENGEID;
+
 title = true;
 
 choice = 0;
 
 vol = 1;
+
+canContinue = false;
 
 global.particle = true;
 
@@ -60,7 +64,7 @@ for(var i = 0; i < array_length(global.frontgrid); i++) {
 
 global.hiscore = 0;
 
-if(OPERA and false) {
+if(OPERA) {
 	try gxc_challenge_get_global_scores(function(_status, _result) {
 		try if (_status == 200 and array_length(_result.data.scores) > 0) global.hiscore = _result.data.scores[0].score/1000;
 		catch(_error) show_debug_message(_error);
@@ -102,3 +106,7 @@ if(BROWSER) {
 }
 
 title = true;
+
+if(!challenge and gxc_get_query_param("roomUrl") != undefined) {
+	alarm[1] = 1;
+}

@@ -46,7 +46,8 @@ if(MOBILE) {
 		draw_text_color(room_width/4*3,6,"PLAYER 2",_col[1],_col[1],c_white,c_white,1);
 		draw_text(room_width/4,6,"\n"+string(playerScores[0] div 60)+":"+string_replace(string_format(playerScores[0] % 60,2,2)," ","0"));
 		draw_text(room_width/4*3,6,"\n"+string(playerScores[1] div 60)+":"+string_replace(string_format(playerScores[1] % 60,2,2)," ","0"));
-		draw_text(room_width/2,6,"HIGH SCORE\n"+string(global.hiscore div 60)+":"+string_replace(string_format(global.hiscore % 60,2,2)," ","0"));
+		draw_text_color(room_width/2,6,"HIGH SCORE",c_red,c_red,c_white,c_white,1);
+		draw_text(room_width/2,6,"\n"+string(global.hiscore div 60)+":"+string_replace(string_format(global.hiscore % 60,2,2)," ","0"));
 	} else {
 		
 		for(var i = 0; i < 4; i++) {
