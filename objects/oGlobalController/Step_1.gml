@@ -51,53 +51,8 @@ if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_ga
 	rollback_start_game();
 } else if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or (mouse_check_button_pressed(mb_left) and MOBILE) or _gamepadPressed) {
 	if(title) {
-		with(oGameManager) {
-			if(other.choice == 0) {
-				global.usingMultiplayer = false;
-				playersLeft = 1;
-				p1 = instance_create_layer(room_width/2,room_height/4,"Instances",oPlayer);
-				p2 = noone;
-				alarm[2] = room_speed*5;
-			} else if(other.choice == 1) {
-				global.usingMultiplayer = false;
-				playersLeft = 2;
-				p1 = instance_create_layer(room_width/3,room_height/4,"Instances",oPlayer);
-				p1.player = 1;
-				p2 = instance_create_layer(room_width/3*2,room_height/4,"Instances",oPlayer);
-				p2.player = 2;
-				p2.image_index = 2;
-				alarm[2] = room_speed*5;
-			} else {
-				global.usingMultiplayer = true;
-				rollback_define_input({
-					left: [vk_left,ord("A")],
-					right: [vk_right,ord("D")],
-					jump: [vk_space,vk_shift,vk_control,vk_up,ord("W")]
-				});
-				rollback_define_player(oPlayer);
-				if (!rollback_join_game()) {
-					rollback_create_game(4,!OPERA);
-					other.multiplayerCreated = true;
-				} else other.multiplayerCreated = false;
-				playerNames = ["PLAYER 1","PLAYER 2","PLAYER 3","PLAYER 4"];
-				other.create = 2;
-			}
-			alarm[0] = -1;
-			alarm[1] = -1;
-			gameoverNum = 0;
-			newrecord = false;
-			timerstart = false;
-			create = 2;
-			amount = minAmount+irandom_range(Min,Max);
-			playerScores = [0,0,0,0];
-			total = 0;
-			totalSubtract = 0;
-		}
-		instance_destroy(oEnemy);
-		canContinue = false;
-		title = false;
-		logo = 0;
-	} else if(oGameManager.playersLeft == 0 and oGameManager.gameoverNum > 1 and !global.usingMultiplayer) title = true;
+		StartGame();
+	} else if(oGameManager.playersLeft == 0 and oGameManager.gameoverNum > 1 and !global.usingMultiplayer) StartGame();
 }
 
 if(title) logo = Approach(logo,1,0.05);

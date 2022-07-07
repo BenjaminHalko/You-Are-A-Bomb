@@ -38,4 +38,6 @@ if(gameoverNum == 8 and global.usingMultiplayer) {
 	}
 	playerScores = [0,0,0,0];
 }
-else if(gameoverNum > 8) title = true;
+else if(gameoverNum > 8) {
+	with(oGlobalController) StartGame();
+}
