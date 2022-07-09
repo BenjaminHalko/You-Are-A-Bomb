@@ -27,6 +27,7 @@ if title and !MOBILE and (keyboard_check_pressed(vk_up) or keyboard_check_presse
 
 if keyboard_check_pressed(vk_escape) and !title {
 	if(global.usingMultiplayer) rollback_leave_game();
+	oGameManager.alarm[1] = -1;
 	title = true;
 	oGameManager.playersLeft = 0;
 	oGameManager.timerstart = false;

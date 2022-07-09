@@ -44,7 +44,6 @@ if (global.usingMultiplayer) {
 }
 
 if(timer <= 0 or y > room_height) {
-	oGameManager.timerstart = false;
 	var _explosionSize = 6*TILE_SIZE;
 	
 	if(scale > 2) {
