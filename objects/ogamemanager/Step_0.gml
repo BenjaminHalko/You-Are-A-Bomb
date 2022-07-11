@@ -34,7 +34,7 @@ if(timerstart) {
 	}
 }
 
-if array_length(destroyList) > 0 and (!global.usingMultiplayer or rollback_sync_on_frame()) {
+if array_length(destroyList) > 0 {
 	while(array_length(destroyList) > 0) {
 		var _data = array_pop(destroyList);
 		tilemap_set_at_pixel(global.collisionMap,0,_data[0],_data[1]);
