@@ -1,6 +1,6 @@
 {
-  "option_operagx_version": "0.0.0.88",
-  "option_operagx_next_version": "0.0.0.89",
+  "option_operagx_version": "0.0.0.90",
+  "option_operagx_next_version": "0.0.0.91",
   "option_operagx_game_name": "You Are A Bomb",
   "option_operagx_interpolate_pixels": false,
   "option_operagx_scale": 0,

@@ -40,7 +40,6 @@ if !oGlobalController.title {
 		playerScores = [0,0,0,0];
 	}
 	else if(gameoverNum > 8) {
-		if MOBILE oGlobalController.title = true;
-		else with(oGlobalController) StartGame();
+		oGlobalController.title = true;
 	}
 }
