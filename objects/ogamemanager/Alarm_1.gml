@@ -21,23 +21,26 @@ if(!global.usingMultiplayer) {
 
 gameoverNum++;
 
-if(gameoverNum == 8 and global.usingMultiplayer) {
-	alarm[0] = -1;
-	alarm[1] = -1;
-	playersLeft = instance_number(oPlayer);
-	gameoverNum = 0;
-	newrecord = false;
-	timerstart = false;
-	create = 2;
-	amount = minAmount+irandom_range(Min,Max);
-	instance_destroy(oEnemy);
-	with(oPlayer) {
-		event_perform(ev_create,0);
-		player = player_id + 1;
-		if player_id != 0 image_index = player_id + 1;
+if !oGlobalController.title {
+	if(gameoverNum == 8 and global.usingMultiplayer) {
+		alarm[0] = -1;
+		alarm[1] = -1;
+		playersLeft = instance_number(oPlayer);
+		gameoverNum = 0;
+		newrecord = false;
+		timerstart = false;
+		create = 2;
+		amount = minAmount+irandom_range(Min,Max);
+		instance_destroy(oEnemy);
+		with(oPlayer) {
+			event_perform(ev_create,0);
+			player = player_id + 1;
+			if player_id != 0 image_index = player_id + 1;
+		}
+		playerScores = [0,0,0,0];
 	}
-	playerScores = [0,0,0,0];
-}
-else if(gameoverNum > 8) {
-	with(oGlobalController) StartGame();
+	else if(gameoverNum > 8) {
+		if MOBILE oGlobalController.title = true;
+		else with(oGlobalController) StartGame();
+	}
 }

@@ -18,13 +18,19 @@ for(var i = 0; i < array_length(global.b); i++) {
 	}
 }
 
-var _size = 2;
-for(var i = 0; i < array_length(global.backgrid); i++) draw_rectangle(i*_size,room_height,(i+1)*_size-(os_browser == browser_not_a_browser),room_height-global.backgrid[i]*_size,false);
+if !surface_exists(surface) {
+	surface = surface_create(room_width,room_height);
+	surface_set_target(surface);
+	var _size = 2;
+	for(var i = 0; i < array_length(global.backgrid); i++) draw_rectangle(i*_size,room_height,(i+1)*_size-(os_browser == browser_not_a_browser),room_height-global.backgrid[i]*_size,false);
 
-_size = 4;
-draw_set_color(c_dkgray);
-for(var i = 0; i < array_length(global.frontgrid); i++) draw_sprite_ext(sWallBackground,0,i*_size,room_height,1,global.frontgrid[i],0,merge_color(c_white,c_black,0.9),1);
+	_size = 4;
+	draw_set_color(c_dkgray);
+	for(var i = 0; i < array_length(global.frontgrid); i++) draw_sprite_ext(sWallBackground,0,i*_size,room_height,1,global.frontgrid[i],0,merge_color(c_white,c_black,0.9),1);
+	surface_reset_target();
+}
 
+draw_surface(surface,0,0);
 gpu_set_blendmode(bm_subtract);
 draw_rectangle_color(0,room_height/3*2,room_width,room_height,c_black,c_black,c_white,c_white,false);
 gpu_set_blendmode(bm_normal);

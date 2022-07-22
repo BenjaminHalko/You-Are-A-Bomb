@@ -1,6 +1,6 @@
 /// @desc Initialize Explosion
 
-if(!global.particle) {
+if(!global.particle or global.mobileOperaGX) {
 	instance_destroy();
 	exit;
 }

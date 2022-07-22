@@ -25,11 +25,13 @@ if(title) {
 		else draw_text(room_width/2-30,room_height-38,"ONLINE MULTIPLAYER");
 		draw_text(room_width/2-40,room_height-76+16*choice+6*(choice == 2),">");
 		draw_set_halign(fa_center);
-	}
+	} else if(oGameManager.gameoverNum % 2) draw_text(room_width/2,room_height-50,"TAP ANYWHERE TO START");
 	draw_set_valign(fa_bottom);
 	var _x = animcurve_channel_evaluate(curve,logo);
 	draw_sprite_ext(sLogo,0,room_width/2,room_height/2-16,_x,_x,0,c_white,_x);
 	draw_text(room_width/2,room_height-6,"© 2022 BENJAMIN HALKO\nMADE FOR LUDUM DARE 50");
+	
+	
 }
 
 if(MOBILE) {

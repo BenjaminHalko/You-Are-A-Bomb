@@ -4,7 +4,7 @@ if(global.usingMultiplayer and !rollback_game_running) exit;
 
 if(timerstart) { tutorial = false; alarm[2] = -1;}
 
-if(playersLeft == 0 and alarm[1] <= 0 and !oGlobalController.title) alarm[1] = 30;
+if(playersLeft == 0 and alarm[1] <= 0) alarm[1] = 30;
 
 if(create < room_width div TILE_SIZE - 2) {
 	if create == 2 amount = minAmount+irandom_range(Min,Max);
