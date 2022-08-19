@@ -42,7 +42,7 @@ if keyboard_check_pressed(vk_escape) and !title {
 if(global.usingMultiplayer and !rollback_game_running) {
 	if(create < room_width div TILE_SIZE - 2) {
 		repeat(2) {
-			for(var i = 0; i < room_height div TILE_SIZE; i++) tilemap_set(global.collisionMap,0,create,i);	
+			for(var i = 0; i < room_height div TILE_SIZE; i++) tilemap_set(oGameManager.collisionMap,0,create,i);	
 			create++;
 		}
 	}

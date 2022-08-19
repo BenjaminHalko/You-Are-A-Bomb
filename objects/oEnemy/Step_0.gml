@@ -19,7 +19,7 @@ if(timer <= 0 or y > room_height) {
 			instance_create_layer(x,y,layer,oPlayerExplosion);
 	 		for(var i = x-_explosionSize; i < x+_explosionSize; i+=TILE_SIZE) {
 				for(var j = y-_explosionSize; j < y+_explosionSize; j+=TILE_SIZE) {
-					if(tilemap_get_at_pixel(global.collisionMap,i,j) != 1 or !point_in_circle(i,j,x,y,_explosionSize)) continue;
+					if(tilemap_get_at_pixel(oGameManager.collisionMap,i,j) != 1 or !point_in_circle(i,j,x,y,_explosionSize)) continue;
 					array_push(oGameManager.destroyList,[i,j]);
 					instance_create_layer(i-(i mod TILE_SIZE),j-(j mod TILE_SIZE),layer,oWallExplosion);
 				}
@@ -38,7 +38,7 @@ if(timer <= 0 or y > room_height) {
 if(activeId != noone) exit;
 
 //Vertical Tiles
-if (tilemap_get_at_pixel(global.collisionMap, bbox_right, bbox_bottom + vsp_final) || tilemap_get_at_pixel(global.collisionMap, bbox_left, bbox_bottom + vsp_final)) or (vsp_final >= 8 and (tilemap_get_at_pixel(global.collisionMap, bbox_right, bbox_bottom + vsp_final/2) || tilemap_get_at_pixel(global.collisionMap, bbox_left, bbox_bottom + vsp_final/2)))
+if (tilemap_get_at_pixel(oGameManager.collisionMap, bbox_right, bbox_bottom + vsp_final) || tilemap_get_at_pixel(oGameManager.collisionMap, bbox_left, bbox_bottom + vsp_final)) or (vsp_final >= 8 and (tilemap_get_at_pixel(oGameManager.collisionMap, bbox_right, bbox_bottom + vsp_final/2) || tilemap_get_at_pixel(oGameManager.collisionMap, bbox_left, bbox_bottom + vsp_final/2)))
 {
 	y = y - (bbox_bottom mod TILE_SIZE);
 	if (sign(vsp) == 1) {

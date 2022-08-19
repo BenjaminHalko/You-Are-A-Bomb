@@ -86,10 +86,7 @@ if(OPERA) {
 	file_text_close(_file);
 }
 
-if(is_nan(global.hiscore)) global.hiscore = 0;
-
-var lay_id = layer_get_id("Wall");
-global.collisionMap = layer_tilemap_get_id(lay_id);	
+if(is_nan(global.hiscore)) global.hiscore = 0;	
 
 song = audio_play_sound(mSong,1,true);
 audio_sound_gain(song,0.6,0);

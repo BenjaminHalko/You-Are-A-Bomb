@@ -1,6 +1,6 @@
 /// @desc Initialize Player Variables
 
-if variable_instance_exists(id,"player_id") {
+if variable_instance_exists(id,"player_id") and global.usingMultiplayer {
 	y = room_height/4;
 	if player_id == 0 {
 		oGameManager.p1 = id;

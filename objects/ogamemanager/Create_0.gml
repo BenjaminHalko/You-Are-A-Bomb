@@ -29,3 +29,6 @@ destroyList = [];
 tutorial = false;
 
 playerNames = ["PLAYER 1","PLAYER 2","PLAYER 3","PLAYER 4"];
+
+var lay_id = layer_get_id("Wall");
+collisionMap = layer_tilemap_get_id(lay_id);

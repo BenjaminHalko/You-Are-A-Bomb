@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "sScreenButtons",
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -24,21 +27,15 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"f6e951f3-5c0a-45c5-b28b-1b4cac995b41","path":"sprites/sScreenButtons/sScreenButtons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"f6e951f3-5c0a-45c5-b28b-1b4cac995b41","path":"sprites/sScreenButtons/sScreenButtons.yy",},"LayerId":{"name":"27bf6769-b68e-446b-8a21-d375b85ceb07","path":"sprites/sScreenButtons/sScreenButtons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sScreenButtons","path":"sprites/sScreenButtons/sScreenButtons.yy",},"resourceVersion":"1.0","name":"f6e951f3-5c0a-45c5-b28b-1b4cac995b41","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"c95259e6-6e7e-46fc-b88f-ebcc873ed56f","path":"sprites/sScreenButtons/sScreenButtons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"c95259e6-6e7e-46fc-b88f-ebcc873ed56f","path":"sprites/sScreenButtons/sScreenButtons.yy",},"LayerId":{"name":"27bf6769-b68e-446b-8a21-d375b85ceb07","path":"sprites/sScreenButtons/sScreenButtons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sScreenButtons","path":"sprites/sScreenButtons/sScreenButtons.yy",},"resourceVersion":"1.0","name":"c95259e6-6e7e-46fc-b88f-ebcc873ed56f","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"d3f3ffb0-7489-4367-95de-8e8c800f895f","path":"sprites/sScreenButtons/sScreenButtons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"d3f3ffb0-7489-4367-95de-8e8c800f895f","path":"sprites/sScreenButtons/sScreenButtons.yy",},"LayerId":{"name":"27bf6769-b68e-446b-8a21-d375b85ceb07","path":"sprites/sScreenButtons/sScreenButtons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sScreenButtons","path":"sprites/sScreenButtons/sScreenButtons.yy",},"resourceVersion":"1.0","name":"d3f3ffb0-7489-4367-95de-8e8c800f895f","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"9c99c653-1428-49d8-934b-8cef4f1252be","path":"sprites/sScreenButtons/sScreenButtons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"9c99c653-1428-49d8-934b-8cef4f1252be","path":"sprites/sScreenButtons/sScreenButtons.yy",},"LayerId":{"name":"27bf6769-b68e-446b-8a21-d375b85ceb07","path":"sprites/sScreenButtons/sScreenButtons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sScreenButtons","path":"sprites/sScreenButtons/sScreenButtons.yy",},"resourceVersion":"1.0","name":"9c99c653-1428-49d8-934b-8cef4f1252be","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"f6e951f3-5c0a-45c5-b28b-1b4cac995b41",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"c95259e6-6e7e-46fc-b88f-ebcc873ed56f",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"d3f3ffb0-7489-4367-95de-8e8c800f895f",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"9c99c653-1428-49d8-934b-8cef4f1252be",},
   ],
   "sequence": {
-    "spriteId": {"name":"sScreenButtons","path":"sprites/sScreenButtons/sScreenButtons.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "sScreenButtons",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -49,12 +46,12 @@
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MessageEventKeyframe",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MomentsEventKeyframe",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"5b1b5dad-0972-4d5b-b3d4-1a7bfc1e7577","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"f6e951f3-5c0a-45c5-b28b-1b4cac995b41","path":"sprites/sScreenButtons/sScreenButtons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
             {"id":"e3e1486f-df76-4a1b-b32b-54b3b3d8e1d6","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"c95259e6-6e7e-46fc-b88f-ebcc873ed56f","path":"sprites/sScreenButtons/sScreenButtons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
             {"id":"1e7991bb-5456-4682-8ffa-33cc8dfbe85b","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"d3f3ffb0-7489-4367-95de-8e8c800f895f","path":"sprites/sScreenButtons/sScreenButtons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
             {"id":"806337f1-e845-4d5a-ae06-3d680868a724","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"9c99c653-1428-49d8-934b-8cef4f1252be","path":"sprites/sScreenButtons/sScreenButtons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -70,22 +67,13 @@
     "yorigin": 24,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"sScreenButtons","path":"sprites/sScreenButtons/sScreenButtons.yy",},
-    "resourceVersion": "1.4",
-    "name": "sScreenButtons",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"27bf6769-b68e-446b-8a21-d375b85ceb07","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"27bf6769-b68e-446b-8a21-d375b85ceb07","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "Global",
     "path": "folders/Global.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "sScreenButtons",
-  "tags": [],
-  "resourceType": "GMSprite",
 }
