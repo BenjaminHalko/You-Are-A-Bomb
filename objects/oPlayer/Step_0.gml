@@ -22,8 +22,8 @@ if(_gpLeft or _gpRight or _gpJump) global.usingGamepad = true;
 
 if (global.usingMultiplayer) {
 	var _input = rollback_get_input();
-	key_left = _input.left;
-	key_right = _input.right;
+	key_left = _input.left or _input.axisH <= -0.5;
+	key_right = _input.right or _input.axisH >= 0.5;
 	key_jump = _input.jump_pressed;
 } else if(player == 0) or (player == 2 and global.usingGamepad) {
 	key_left = keyboard_check(vk_left) or keyboard_check(ord("A")) or oGlobalController.leftScreen or (_gpLeft and player == 0);	

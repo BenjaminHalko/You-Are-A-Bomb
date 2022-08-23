@@ -46,11 +46,11 @@ create = 2;
 
 global.particle = true;
 
-global.b = []
+oBackground.b = []
 
 global.usingGamepad = false;
 
-repeat(5) array_push(global.b,{
+repeat(5) array_push(oBackground.b,{
 	wait: irandom(60*5),
 	x: irandom(room_width),
 	y: -12,
@@ -58,11 +58,11 @@ repeat(5) array_push(global.b,{
 	scale: random(1)
 });
 
-global.backgrid = array_create(room_width div 2,0);
+oBackground.backgrid = array_create(room_width div 2,0);
 var _amount = irandom_range(80,100);
-for(var i = 0; i < array_length(global.backgrid); i++) {
+for(var i = 0; i < array_length(oBackground.backgrid); i++) {
 	_amount += irandom_range(-4*(_amount > 80),4*(_amount < 100));
-	global.backgrid[i] = _amount;
+	oBackground.backgrid[i] = _amount;
 }
 
 global.frontgrid = array_create(room_width div 4,0);

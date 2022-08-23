@@ -5,4 +5,5 @@ if instance_number(oPlayer) == 1 {
 	rollback_leave_game();
 	oPlayer.player = 0;
 	if oPlayer.starting < 2 oPlayer.x = room_width/2;
+	oGlobalController.choice = 0;
 }

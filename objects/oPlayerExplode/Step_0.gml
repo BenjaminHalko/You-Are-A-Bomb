@@ -1,5 +1,4 @@
 /// @desc
-
 for(var i = 0; i < array_length(p); i++) {
 	p[i].x += p[i].hsp;
 	p[i].vsp += p[i].grv;

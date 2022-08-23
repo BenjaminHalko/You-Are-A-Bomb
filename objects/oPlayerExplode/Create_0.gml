@@ -20,4 +20,4 @@ for(var i = 0; i < 30; i += 1+MOBILE*1.2) for(var j = 0; j < 30; j += 1+MOBILE*1
 	grv: random_range(0.1,0.2)
 });
 
-if(!global.particle or global.mobileOperaGX) instance_destroy();
+if(!global.particle or global.mobileOperaGX) and !global.usingMultiplayer instance_destroy();
