@@ -38,6 +38,14 @@ if !oGlobalController.title {
 			if player_id != 0 image_index = player_id + 1;
 		}
 		playerScores = [0,0,0,0];
+		
+		if instance_number(oPlayer) == 1 {
+			global.usingMultiplayer = false;
+			rollback_leave_game();
+			oPlayer.player = 0;
+			if oPlayer.starting < 2 oPlayer.x = room_width/2;
+			oGlobalController.choice = 0;
+		}
 	}
 	else if(gameoverNum > 8) {
 		oGlobalController.title = true;

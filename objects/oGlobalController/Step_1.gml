@@ -53,7 +53,16 @@ if(keyboard_check_pressed(vk_enter) and global.usingMultiplayer and !rollback_ga
 } else if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or (mouse_check_button_pressed(mb_left) and MOBILE) or _gamepadPressed) {
 	if(title) {
 		StartGame();
-	} else if(oGameManager.playersLeft == 0 and oGameManager.gameoverNum > 1 and !global.usingMultiplayer) StartGame();
+	} else if(oGameManager.playersLeft == 0 and oGameManager.gameoverNum > 1 and (!global.usingMultiplayer or instance_number(oPlayer) == 1)) {
+		StartGame();
+		if instance_number(oPlayer) == 1 and global.usingMultiplayer {
+			global.usingMultiplayer = false;
+			rollback_leave_game();
+			oPlayer.player = 0;
+			if oPlayer.starting < 2 oPlayer.x = room_width/2;
+			oGlobalController.choice = 0;
+		}
+	}
 }
 
 if(title) logo = Approach(logo,1,0.05);
