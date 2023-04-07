@@ -6,6 +6,10 @@ if(gameoverNum == 0 and !title) {
 		catch(_error) show_debug_message(_error);
 	}
 	
+	if(global.googlePlayIsAvailable) {
+		GooglePlayServices_Leaderboard_SubmitScore(GOOGLEPLAYLEADERBOARDID,max(global.score[0],global.score[1])*1000,"");
+	}
+	
 	if(max(global.score[0],global.score[1]) > global.hiscore) {
 		global.hiscore = max(global.score[0],global.score[1]);
 		newrecord = true;

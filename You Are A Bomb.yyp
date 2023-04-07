@@ -11,11 +11,12 @@
   },
   "defaultScriptType": 1,
   "Folders": [
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"~Google Play","folderPath":"folders/~Google Play.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"~GXC API","folderPath":"folders/~GXC API.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Http Manager","folderPath":"folders/~GXC API/Http Manager.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Background","folderPath":"folders/Background.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Enemy","folderPath":"folders/Enemy.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Global","folderPath":"folders/Global.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"GXC API","folderPath":"folders/GXC API.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Http Manager","folderPath":"folders/GXC API/Http Manager.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Player","folderPath":"folders/Player.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Effects","folderPath":"folders/Player/Effects.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sounds","folderPath":"folders/Player/Sounds.yy",},
@@ -28,7 +29,9 @@
     "IDEVersion": "2023.200.0.299",
   },
   "resources": [
+    {"id":{"name":"GooglePlayServices","path":"extensions/GooglePlayServices/GooglePlayServices.yy",},},
     {"id":{"name":"mSong","path":"sounds/mSong/mSong.yy",},},
+    {"id":{"name":"rInit","path":"rooms/rInit/rInit.yy",},},
     {"id":{"name":"fontPlayer","path":"fonts/fontPlayer/fontPlayer.yy",},},
     {"id":{"name":"oBackground","path":"objects/oBackground/oBackground.yy",},},
     {"id":{"name":"fontGui","path":"fonts/fontGui/fontGui.yy",},},
@@ -57,11 +60,13 @@
     {"id":{"name":"PlayerStartCurve","path":"animcurves/PlayerStartCurve/PlayerStartCurve.yy",},},
     {"id":{"name":"tWall","path":"tilesets/tWall/tWall.yy",},},
     {"id":{"name":"sWall","path":"sprites/sWall/sWall.yy",},},
+    {"id":{"name":"Notch","path":"extensions/Notch/Notch.yy",},},
     {"id":{"name":"gxc_api_config","path":"scripts/gxc_api_config/gxc_api_config.yy",},},
     {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},},
     {"id":{"name":"rGame","path":"rooms/rGame/rGame.yy",},},
   ],
   "RoomOrderNodes": [
+    {"roomId":{"name":"rInit","path":"rooms/rInit/rInit.yy",},},
     {"roomId":{"name":"rGame","path":"rooms/rGame/rGame.yy",},},
   ],
   "TextureGroups": [

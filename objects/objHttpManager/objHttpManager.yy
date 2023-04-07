@@ -10,7 +10,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Http Manager",
-    "path": "folders/GXC API/Http Manager.yy",
+    "path": "folders/~GXC API/Http Manager.yy",
   },
   "parentObjectId": null,
   "persistent": true,

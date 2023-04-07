@@ -1,7 +1,10 @@
 {
-  "FolderOrderSettings": [],
+  "FolderOrderSettings": [
+    {"name":"~Google Play","order":1,"path":"folders/~Google Play.yy",},
+  ],
   "ResourceOrderSettings": [
     {"name":"mSong","order":3,"path":"sounds/mSong/mSong.yy",},
+    {"name":"rInit","order":7,"path":"rooms/rInit/rInit.yy",},
     {"name":"fontPlayer","order":6,"path":"fonts/fontPlayer/fontPlayer.yy",},
     {"name":"fontGui","order":2,"path":"fonts/fontGui/fontGui.yy",},
     {"name":"snJump","order":3,"path":"sounds/snJump/snJump.yy",},
@@ -24,6 +27,7 @@
     {"name":"oScore","order":1,"path":"objects/oScore/oScore.yy",},
     {"name":"PlayerStartCurve","order":9,"path":"animcurves/PlayerStartCurve/PlayerStartCurve.yy",},
     {"name":"tWall","order":1,"path":"tilesets/tWall/tWall.yy",},
+    {"name":"Notch","order":8,"path":"extensions/Notch/Notch.yy",},
     {"name":"gxc_api_config","order":3,"path":"scripts/gxc_api_config/gxc_api_config.yy",},
     {"name":"rGame","order":5,"path":"rooms/rGame/rGame.yy",},
   ],

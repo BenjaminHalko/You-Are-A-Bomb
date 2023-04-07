@@ -10,19 +10,25 @@ enum OS {
 
 if(os_type == os_operagx) global.ostype = OS.OSOPERA;
 else if(os_browser != browser_not_a_browser) global.ostype = OS.OSBROWSER;
-else if(os_type == os_android) global.ostype = OS.OSMOBILE;
+else if(os_type == os_android or os_type == os_ios) global.ostype = OS.OSMOBILE;
 else global.ostype = OS.OSDESKTOP;
+
+global.googlePlayIsAvailable = GooglePlayServices_IsAvailable();
 
 #macro BROWSER (global.ostype == OS.OSBROWSER)
 #macro OPERA (global.ostype == OS.OSOPERA)
 #macro DESKTOP (global.ostype == OS.OSDESKTOP)
-#macro MOBILE ((global.ostype == OS.OSMOBILE) or (os_type == os_android))
+#macro MOBILE ((global.ostype == OS.OSMOBILE) or (os_type == os_android) or (os_type == os_ios))
 
 #macro CHALLENGEID "50505bbb-2b2f-4027-88fa-11b1d5a6c826"
+#macro GOOGLEPLAYLEADERBOARDID "CgkI67bDvdsGEAIQAQ"
 #macro TILE_SIZE 8
 
 surface_resize(application_surface,room_width,room_height);
-if(DESKTOP) window_set_size(room_width*3,room_height*3);
+if(DESKTOP) {
+	window_set_size(room_width*3,room_height*3);
+	window_center();
+}
 
 create = 2;
 minAmount = 4;
@@ -46,11 +52,11 @@ vol = 1;
 
 global.particle = true;
 
-global.b = []
+oBackground.b = []
 
 global.usingGamepad = false;
 
-repeat(5) array_push(global.b,{
+repeat(5) array_push(oBackground.b,{
 	wait: irandom(60*5),
 	x: irandom(room_width),
 	y: -12,
@@ -58,11 +64,11 @@ repeat(5) array_push(global.b,{
 	scale: random(1)
 });
 
-global.backgrid = array_create(room_width div 2,0);
+oBackground.backgrid = array_create(room_width div 2,0);
 var _amount = irandom_range(80,100);
-for(var i = 0; i < array_length(global.backgrid); i++) {
+for(var i = 0; i < array_length(oBackground.backgrid); i++) {
 	_amount += irandom_range(-4*(_amount > 80),4*(_amount < 100));
-	global.backgrid[i] = _amount;
+	oBackground.backgrid[i] = _amount;
 }
 
 global.frontgrid = array_create(room_width div 4,0);
@@ -74,8 +80,6 @@ for(var i = 0; i < array_length(global.frontgrid); i++) {
 
 global.score = [0,0];
 global.hiscore = 0;
-
-
 
 if(OPERA) {
 	try gxc_challenge_get_global_scores(function(_status, _result) {
@@ -117,4 +121,11 @@ if(BROWSER) {
 	width = browser_width;
 	height = browser_height;
 	scale_canvas(480,256,width,height);
+}
+
+for(var i = 0; i < room_height; i += TILE_SIZE) {
+	tilemap_set_at_pixel(global.collisionMap,2,0,i);	
+	tilemap_set_at_pixel(global.collisionMap,2,TILE_SIZE,i);
+	tilemap_set_at_pixel(global.collisionMap,2,room_width-TILE_SIZE*2,i);
+	tilemap_set_at_pixel(global.collisionMap,2,room_width-TILE_SIZE,i);
 }

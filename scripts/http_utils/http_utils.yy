@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Http Manager",
-    "path": "folders/GXC API/Http Manager.yy",
+    "path": "folders/~GXC API/Http Manager.yy",
   },
 }

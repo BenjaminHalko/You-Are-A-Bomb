@@ -5,7 +5,7 @@
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "GXC API",
-    "path": "folders/GXC API.yy",
+    "name": "~GXC API",
+    "path": "folders/~GXC API.yy",
   },
 }

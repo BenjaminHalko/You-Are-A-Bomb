@@ -33,7 +33,7 @@ if(title) {
 
 if(gameoverNum % 2) {
 	if(!title) draw_text(room_width/2,room_height/2,"GAME OVER");
-	else if(MOBILE) draw_text(room_width/2,room_height-50,"TAP ANYWHERE TO START");
+	else if(MOBILE) draw_text(room_width/2,room_height-42,"TAP ANYWHERE TO START");
 	
 	if(newrecord) {
 		draw_set_valign(fa_top);
