@@ -16,7 +16,7 @@ if(_gamepadPressed) global.usingGamepad = true;
 if(create < room_width div TILE_SIZE - 2) {
 	repeat(2) {
 		amount += irandom_range(-6*(amount > Min and create != room_width div TILE_SIZE div 2 - 1)+2*(create == room_width div TILE_SIZE div 2 - 1)-2*(create == room_width div TILE_SIZE div 2 + 1),6*(amount < Max)*(create != room_width div TILE_SIZE div 2 + 1))*(create != room_width div TILE_SIZE div 2);
-		for(var i = 0; i < room_height div TILE_SIZE; i++) tilemap_set(global.collisionMap,i >= room_height div TILE_SIZE -(minAmount+abs(amount)),create,i);	
+		for(var i = 0; i < room_height / TILE_SIZE; i++) tilemap_set(global.collisionMap,i >= ceil(room_height / TILE_SIZE) -(minAmount+abs(amount)),create,i);	
 		create++;
 	}
 }
@@ -99,7 +99,13 @@ if MOBILE {
 		}
 	}
 	
-	if(keyboard_check_pressed(vk_backspace) and !BROWSER) game_end(); 
+	if(keyboard_check_pressed(vk_backspace) and !BROWSER) {
+		if title game_end();
+		else {
+			title = true;
+			instance_destroy(oPlayer);
+		}
+	}
 }
 
 if DESKTOP {
