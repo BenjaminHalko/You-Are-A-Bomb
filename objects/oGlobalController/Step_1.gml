@@ -103,6 +103,7 @@ if MOBILE {
 		if title game_end();
 		else {
 			title = true;
+			tutorial = false;
 			instance_destroy(oPlayer);
 		}
 	}

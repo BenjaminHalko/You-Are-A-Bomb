@@ -68,7 +68,7 @@ with(oEnemy) {
 		var _dir = point_direction(x,y,other.x,other.y);
 		x += lengthdir_x(_dist,_dir);
 		y += lengthdir_y(_dist,_dir);
-		if(round(x) == other.x and round(y) == other.y) {
+		if(round(x) == round(other.x) and round(y) == round(other.y)) {
 			with(instance_create_layer(other.x,other.y-16,other.layer,oScore)) amount = string(other.timer);
 			other.timer = min(21,other.timer+timer);
 			other.maxTime = other.timer;
