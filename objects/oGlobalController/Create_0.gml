@@ -21,7 +21,7 @@ global.googlePlayIsAvailable = GooglePlayServices_IsAvailable();
 #macro MOBILE ((global.ostype == OS.OSMOBILE) or (os_type == os_android) or (os_type == os_ios))
 
 #macro CHALLENGEID "50505bbb-2b2f-4027-88fa-11b1d5a6c826"
-#macro GOOGLEPLAYLEADERBOARDID "CgkI67bDvdsGEAIQAQ"
+#macro GOOGLEPLAYLEADERBOARDID "CgkIn8Sfj7sXEAIQAQ"
 #macro TILE_SIZE 8
 
 surface_resize(application_surface,room_width,room_height);
