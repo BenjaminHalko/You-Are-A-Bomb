@@ -95,8 +95,7 @@ if(OPERA) {
 
 if(is_nan(global.hiscore)) global.hiscore = 0;
 
-var lay_id = layer_get_id("Wall");
-global.collisionMap = layer_tilemap_get_id(lay_id);	
+global.collisionMap = layer_tilemap_create(layer_create(150,"Wall"),0,0,tWall,room_width,room_height);	
 
 song = audio_play_sound(mSong,1,true);
 audio_sound_gain(song,0.6,0);

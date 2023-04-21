@@ -1,5 +1,5 @@
 /// @desc
-draw_rectangle_color(0,0,room_width,room_height/2,#260000,#260000,c_black,c_black,false);
+draw_rectangle_color(0,0,room_width,room_height-136,#260000,#260000,c_black,c_black,false);
 draw_set_color(c_black);
 
 for(var i = 0; i < array_length(oBackground.b); i++) {
