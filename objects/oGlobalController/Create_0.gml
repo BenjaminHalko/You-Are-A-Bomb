@@ -128,3 +128,10 @@ for(var i = 0; i < room_height; i += TILE_SIZE) {
 	tilemap_set_at_pixel(global.collisionMap,2,room_width-TILE_SIZE*2,i);
 	tilemap_set_at_pixel(global.collisionMap,2,room_width-TILE_SIZE,i);
 }
+
+var _cam = view_camera[0];
+camera_set_view_size(_cam,room_width,room_height);
+view_set_wport(0,room_width);
+view_set_hport(0,room_height);
+camera_set_view_pos(_cam,0,TILE_SIZE - (room_height % TILE_SIZE));
+global.bottom = ceil(room_height / TILE_SIZE) * TILE_SIZE;

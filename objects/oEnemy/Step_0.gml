@@ -11,7 +11,7 @@ bounce = max(0,bounce+bounceSpd);
 
 if(!instance_exists(activeId)) activeId = noone;
 
-if(timer <= 0 or y > room_height) {
+if(timer <= 0 or y > global.bottom) {
 	var _explosionSize = random_range(4,6)*TILE_SIZE;
 	
 	if(activeId == noone) {

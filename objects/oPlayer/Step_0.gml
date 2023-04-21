@@ -36,7 +36,7 @@ if(player == 0) or (player == 2 and global.usingGamepad) {
 	key_jump = keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up);
 }
 
-if(timer <= 0 or y > room_height) {
+if(timer <= 0 or y > global.bottom) {
 	oGlobalController.timerstart = false;
 	var _explosionSize = 6*TILE_SIZE;
 	
