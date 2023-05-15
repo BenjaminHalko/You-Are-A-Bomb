@@ -16,14 +16,19 @@ if(_gamepadPressed) global.usingGamepad = true;
 if(create < room_width div TILE_SIZE - 2) {
 	repeat(2) {
 		amount += irandom_range(-6*(amount > Min and create != room_width div TILE_SIZE div 2 - 1)+2*(create == room_width div TILE_SIZE div 2 - 1)-2*(create == room_width div TILE_SIZE div 2 + 1),6*(amount < Max)*(create != room_width div TILE_SIZE div 2 + 1))*(create != room_width div TILE_SIZE div 2);
-		for(var i = 0; i < room_height / TILE_SIZE; i++) tilemap_set(global.collisionMap,i >= ceil(room_height / TILE_SIZE) -(minAmount+abs(amount)),create,i);	
+		for(var i = 0; i < room_height / TILE_SIZE; i++) tilemap_set(global.collisionMap,i >= ceil(room_height / TILE_SIZE) -(minAmount+abs(amount)),create,i);
 		create++;
+		global.allBlocks += minAmount+abs(amount);
 	}
 }
 
 if(timerstart) {
+	var _last = global.score[0];
 	if(instance_exists(p1)) global.score[0] += 1/60;
 	if(instance_exists(p2)) global.score[1] += 1/60;
+	if _last % 60 > global.score[0] % 60 and _last < 60 * 5 {
+		GooglePlayServices_Achievements_Unlock(global.achievements[_last div 60]);	
+	}
 } else {
 	with(oPlayer) if(timeStart) {
 		other.timerstart = true;
@@ -57,14 +62,20 @@ if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keybo
 		alarm[1] = -1;
 		amount = minAmount+irandom_range(Min,Max);
 		create = 2;
+		global.allBlocks = 0;
 		gameoverNum = 0;
 		title = false;
 		timerstart = false;
 		logo = 0;
 		newrecord = false;
+		global.currentDamage = 0;
 		global.score = [0,0];
 		alarm[2] = room_speed*5;
-	} else if(!instance_exists(oPlayer) and gameoverNum > 1) title = true;
+	} else if(!instance_exists(oPlayer) and gameoverNum > 1) {
+		title = true;
+		alarm[2] = -1;
+		tutorial = false;
+	}
 }
 
 if(title) logo = Approach(logo,1,0.05);

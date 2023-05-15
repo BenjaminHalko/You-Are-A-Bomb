@@ -22,6 +22,10 @@ if(timer <= 0 or y > global.bottom) {
 					if(tilemap_get_at_pixel(global.collisionMap,i,j) != 1 or !point_in_circle(i,j,x,y,_explosionSize)) continue;
 					tilemap_set_at_pixel(global.collisionMap,0,i,j);
 					instance_create_layer(i-(i mod TILE_SIZE),j-(j mod TILE_SIZE),layer,oWallExplosion);
+					global.currentDamage++;
+					if global.allBlocks-global.currentDamage == 150 and os_type == os_android and oGlobalController.timerstart {
+						GooglePlayServices_Achievements_Unlock(GOOGLEPLAYDAMAGEACHIEVEMENT);	
+					}
 				}
 			}
 			instance_create_layer(x,y,layer,oPlayerExplode);

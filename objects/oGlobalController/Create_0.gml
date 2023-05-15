@@ -24,6 +24,17 @@ global.googlePlayIsAvailable = GooglePlayServices_IsAvailable();
 #macro GOOGLEPLAYLEADERBOARDID "CgkIn8Sfj7sXEAIQAQ"
 #macro TILE_SIZE 8
 
+global.achievements = [
+"CgkIn8Sfj7sXEAIQAg",
+"CgkIn8Sfj7sXEAIQAw",
+"CgkIn8Sfj7sXEAIQBA",
+"CgkIn8Sfj7sXEAIQBQ",
+"CgkIn8Sfj7sXEAIQBg"];
+
+#macro GOOGLEPLAYDAMAGEACHIEVEMENT "CgkIn8Sfj7sXEAIQCA"
+global.currentDamage = 0;
+global.allBlocks = 0;
+
 surface_resize(application_surface,room_width,room_height);
 if(DESKTOP) {
 	window_set_size(room_width*3,room_height*3);
